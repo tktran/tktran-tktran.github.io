@@ -1,8 +1,5 @@
-<!-- UI -->
-<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
-<script>
 // Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 var uiConfig = {
@@ -44,7 +41,5 @@ firebase.auth().onAuthStateChanged(function(user) {
     // ...
   }
 });
-
-</script>
 
 <!-- https://firebase.google.com/docs/auth/web/start -->
