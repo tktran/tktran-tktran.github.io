@@ -1,5 +1,3 @@
-<script>
-
 function update_learning_content(thisObj)
 {
 	// Task 2: using Firestore, retrieve next card and update values in boxes
@@ -7,7 +5,8 @@ function update_learning_content(thisObj)
 	  if (user) {
 	    console.log('update_learning_content got user: ' + user.uid)
 
-	    var query = db.collection('notes').where('user', '==', user.uid);
+	    // var query = db.collection('notes').where('user', '==', user.uid);
+	    var query = db.collection('notes').where('user', '==', 'S4BpEFgxflezIHhuzUH19819mg93');
 	    query.get()
 	    	.then
 	    	(
@@ -77,5 +76,3 @@ $(this).ready
 		console.log('ready.')
 	}
 )
-
-</script>
