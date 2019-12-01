@@ -89,7 +89,7 @@ getAllCards = function(renderer)
   var query = db
   	.collection('notes')
   	.where('user', '==', user.uid)
-  	.orderBy('spacingLastDue');
+  	.orderBy('spacingLastDue')
   	.limit(1);
   this.getDocumentsInCardQuery(query, renderer);
 }
