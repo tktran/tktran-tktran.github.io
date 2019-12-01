@@ -1,6 +1,7 @@
 function update_learning_content(thisObj)
 {
 	// Task 2: using Firestore, retrieve next card and update values in boxes
+	var db = firebase.firestore();
 	firebase.auth().onAuthStateChanged(function(user) {
 	  if (user) {
 	    console.log('update_learning_content got user: ' + user.uid)
@@ -72,7 +73,6 @@ function update_learning_content(thisObj)
 $(this).ready
 (
 	function() {
-		var db = firebase.firestore();
 		update_learning_content($(this));
 		console.log('ready.')
 	}
