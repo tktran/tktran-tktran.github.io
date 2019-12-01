@@ -132,6 +132,7 @@ getDocumentsInCardQuery = function(thisObj)
 		} else {
 			console.log('no auth user')
 		}
+	});
 };
 
 
