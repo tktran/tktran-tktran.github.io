@@ -118,12 +118,20 @@ getDocumentsInCardQuery = function(thisObj)
 		.where('user', '==', user.uid)
 		.orderBy('spacingLastDue')
 		.limit(1);
-	query.onSnapshot(function(snapshot) {
-		if (!snapshot.size) return;
-		querySnapshot.forEach(function(doc) {
-			console.log(doc.id, ' -> ', doc.data());
-		});
-	});
+
+	firebase.auth().onAuthStateChanged(function(user) {
+	  if (user) {
+	    console.log('update_learning_content got user: ' + user.uid)
+
+			query.onSnapshot(function(snapshot) {
+				if (!snapshot.size) return;
+				querySnapshot.forEach(function(doc) {
+					console.log(doc.id, ' -> ', doc.data());
+				});
+			});
+		} else {
+			console.log('no auth user')
+		}
 };
 
 
