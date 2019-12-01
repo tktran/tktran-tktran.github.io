@@ -1,3 +1,8 @@
+function query_cards(thisObj)
+{
+
+}
+
 function update_learning_content(thisObj)
 {
 	// Task 2: using Firestore, retrieve next card and update values in boxes
@@ -70,10 +75,60 @@ function update_learning_content(thisObj)
     // )
 }
 
+// https://codelabs.developers.google.com/codelabs/firestore-web/#6
+// In this section, you'll learn how to retrieve data from Cloud 
+// Firestore and display it in your app. The two key steps are 
+// creating a query and adding a snapshot listener. This listener 
+// will be notified of all existing data that matches the query 
+// and will receive updates in real time. [Have to do it this way.
+// Can't just get the list of cards all at once, because failed cards
+// need to be able to pop up again]
+
+getAllCards = function(renderer)
+{
+  var query = db
+  	.collection('notes')
+  	.where('user', '==', user.uid)
+  	.orderBy('spacingLastDue');
+  	.limit(1);
+  this.getDocumentsInCardQuery(query, renderer);
+}
+
+// getDocumentsInCardQuery = function(query, renderer)
+// {
+// 	query.onSnapshot(function(snapshot) {
+// 		if (!snapshot.size) return;
+
+// 		snapshot.docChanges().forEach(function(change) {
+// 			if (change.type == 'removed') {
+// 				renderer.remove(change.doc);
+// 			} else {
+// 				renderer.display(change.doc);
+// 			}
+// 		});
+// 	});
+// };
+
+getDocumentsInCardQuery = function(thisObj)
+{
+	var query = db
+		.collection('notes')
+		.where('user', '==', user.uid)
+		.orderBy('spacingLastDue');
+		.limit(1);
+	query.onSnapshot(function(snapshot) {
+		if (!snapshot.size) return;
+		querySnapshot.forEach(function(doc) {
+			console.log(doc.id, ' -> ', doc.data());
+		});
+	});
+};
+
+
 $(this).ready
 (
 	function() {
-		update_learning_content($(this));
-		console.log('ready.')
+		getDocumentsInCardQuery($(this));
+		console.log('Done.')
 	}
 )
