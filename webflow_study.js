@@ -118,7 +118,7 @@ getDocumentsInCardQuery = function(thisObj)
 	    console.log('update_learning_content got user: ' + user.uid)
 	    
 	    var query = db
-	    	.collection('notes')
+	    	.collection('cards')
 	    	.where('user', '==', user.uid)
 	    	.orderBy('spacingLastDue')
 	    	.limit(1);
