@@ -111,6 +111,8 @@ getAllCards = function(renderer)
 
 getDocumentsInCardQuery = function(thisObj)
 {
+	var db = firebase.firestore();
+
 	var query = db
 		.collection('notes')
 		.where('user', '==', user.uid)
