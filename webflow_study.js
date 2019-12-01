@@ -72,6 +72,7 @@ function update_learning_content(thisObj)
 $(this).ready
 (
 	function() {
+		var db = firebase.firestore();
 		update_learning_content($(this));
 		console.log('ready.')
 	}
