@@ -128,7 +128,7 @@ getDocumentsInCardQuery = function(thisObj)
 					console.log('snapshot empty')
 					return;
 				}
-				querySnapshot.forEach(function(doc) {
+				snapshot.forEach(function(doc) {
 					console.log(doc.id, ' -> ', doc.data());
 				});
 			});
