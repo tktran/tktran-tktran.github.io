@@ -124,7 +124,10 @@ getDocumentsInCardQuery = function(thisObj)
 	    	.limit(1);
 
 			query.onSnapshot(function(snapshot) {
-				if (!snapshot.size) return;
+				if (!snapshot.size) {
+					return;
+					console.log('snapshot empty')
+				}
 				querySnapshot.forEach(function(doc) {
 					console.log(doc.id, ' -> ', doc.data());
 				});
