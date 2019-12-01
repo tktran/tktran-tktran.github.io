@@ -114,7 +114,7 @@ getDocumentsInCardQuery = function(thisObj)
 	var query = db
 		.collection('notes')
 		.where('user', '==', user.uid)
-		.orderBy('spacingLastDue');
+		.orderBy('spacingLastDue')
 		.limit(1);
 	query.onSnapshot(function(snapshot) {
 		if (!snapshot.size) return;
