@@ -113,15 +113,15 @@ getDocumentsInCardQuery = function(thisObj)
 {
 	var db = firebase.firestore();
 
-	var query = db
-		.collection('notes')
-		.where('user', '==', user.uid)
-		.orderBy('spacingLastDue')
-		.limit(1);
-
 	firebase.auth().onAuthStateChanged(function(user) {
 	  if (user) {
 	    console.log('update_learning_content got user: ' + user.uid)
+	    
+	    var query = db
+	    	.collection('notes')
+	    	.where('user', '==', user.uid)
+	    	.orderBy('spacingLastDue')
+	    	.limit(1);
 
 			query.onSnapshot(function(snapshot) {
 				if (!snapshot.size) return;
