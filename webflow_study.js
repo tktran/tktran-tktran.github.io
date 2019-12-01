@@ -7,7 +7,7 @@ function update_learning_content(thisObj)
 	    console.log('update_learning_content got user: ' + user.uid)
 
 	    // var query = db.collection('notes').where('user', '==', user.uid);
-	    var query = db.collection('notes').where('user', '==', user.uid);
+	    var query = db.collection('notes').where('user', '==', user.uid).orderby('spacingLastDue');
 	    query.get()
 	    	.then
 	    	(
