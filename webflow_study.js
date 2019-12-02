@@ -132,6 +132,7 @@ getDocumentsInCardQuery = function(thisObj)
 					console.log(doc.id, ' -> ', doc.data());
 					// Success here! Now have to get the note again? 
 					// Or should I populate the card. Probably the card.
+					console.log('contentClozed: ', doc.contentClozed)
 					$("#clozedContent").html(doc.contentClozed)
 				});
 			});
