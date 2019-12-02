@@ -130,10 +130,8 @@ getDocumentsInCardQuery = function(thisObj)
 				}
 				snapshot.forEach(function(doc) {
 					console.log(doc.id, ' -> ', doc.data());
-					// Success here! Now have to get the note again? 
-					// Or should I populate the card. Probably the card.
-					console.log('contentClozed: ', doc.contentClozed)
-					$("#clozedContent").html(doc.contentClozed)
+					console.log('contentClozed: ', doc.contentClozed);
+					$("#clozedContent").html(doc.contentClozed);
 				});
 			});
 		} else {
