@@ -130,8 +130,9 @@ getDocumentsInCardQuery = function(thisObj)
 				}
 				snapshot.forEach(function(doc) {
 					console.log(doc.id, ' -> ', doc.data());
-					console.log('contentClozed: ', doc.contentClozed);
 					$("#clozedContent").html(doc.get('contentClozed'));
+					$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
+					$("#preNote").html(doc.get('notePre'));
 				});
 			});
 		} else {
