@@ -167,13 +167,14 @@ $("#showAnswerButton").click
 (
 	function()
 	{
-			$("#clozedContent").hide();
-			$("#originalContent").show();
+		console.log("showAnswerButton click");
+		$("#clozedContent").hide();
+		$("#originalContent").show();
 
-			$("#preNote").hide();
-			$("#postNote").show();
+		$("#preNote").hide();
+		$("#postNote").show();
 
-			$("showAnswerButton").hide();
-			$("setIntervalDiv").show();
+		$("showAnswerButton").hide();
+		$("setIntervalDiv").show();
 	}
 )
