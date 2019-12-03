@@ -68,7 +68,7 @@
     // 		error: function() { console.log("update_learning_content failed.")}
     // 	}
     // )
-}
+// }
 
 // https://codelabs.developers.google.com/codelabs/firestore-web/#6
 // In this section, you'll learn how to retrieve data from Cloud 
