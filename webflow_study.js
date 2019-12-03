@@ -139,7 +139,7 @@ getDocumentsInCardQuery = function(thisObj)
 	});
 };
 
-$("showAnswerButton").click
+$("#showAnswerButton").click
 (
 	function()
 	{
