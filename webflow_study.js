@@ -144,6 +144,30 @@ $("#showAnswerButton").click
 	}
 )
 
+$("#buttonAgain").click
+(
+	function()
+	{
+		console.log("buttonAgain click.");
+	}
+)
+
+$("#buttonGood").click
+(
+	function()
+	{
+		console.log("buttonGood click.");
+	}
+)
+
+$("#buttonBest").click
+(
+	function()
+	{
+		console.log("buttonBest click.");
+	}
+)
+
 // active_tf: true
 // clozeNum: 1
 // contentClozed: "政府的[decision]引起了很多不同的指責。"
