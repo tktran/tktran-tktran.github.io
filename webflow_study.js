@@ -139,8 +139,8 @@ $("#showAnswerButton").click
 
 		$("#postNote").show();
 
-		$("showAnswerButton").hide();
-		$("setIntervalDiv").show();
+		$("#showAnswerDiv").hide();
+		$("#setIntervalDiv").show();
 	}
 )
 
