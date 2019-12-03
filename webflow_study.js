@@ -139,21 +139,6 @@ getDocumentsInCardQuery = function(thisObj)
 	});
 };
 
-$("#showAnswerButton").click
-(
-	function()
-	{
-			$("#clozedContent").hide();
-			$("#originalContent").show();
-
-			$("#preNote").hide();
-			$("#postNote").show();
-
-			$("showAnswerButton").hide();
-			$("setIntervalDiv").show();
-	}
-)
-
 // active_tf: true
 // clozeNum: 1
 // contentClozed: "政府的[decision]引起了很多不同的指責。"
@@ -175,5 +160,20 @@ $(this).ready
 	function() {
 		getDocumentsInCardQuery($(this));
 		console.log('Done.')
+	}
+)
+
+$("#showAnswerButton").click
+(
+	function()
+	{
+			$("#clozedContent").hide();
+			$("#originalContent").show();
+
+			$("#preNote").hide();
+			$("#postNote").show();
+
+			$("showAnswerButton").hide();
+			$("setIntervalDiv").show();
 	}
 )
