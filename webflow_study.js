@@ -1,38 +1,38 @@
-function update_learning_content(thisObj)
-{
-	// Task 2: using Firestore, retrieve next card and update values in boxes
-	var db = firebase.firestore();
-	firebase.auth().onAuthStateChanged(function(user) {
-	  if (user) {
-	    console.log('update_learning_content got user: ' + user.uid)
+// function update_learning_content(thisObj)
+// {
+// 	// Task 2: using Firestore, retrieve next card and update values in boxes
+// 	var db = firebase.firestore();
+// 	firebase.auth().onAuthStateChanged(function(user) {
+// 	  if (user) {
+// 	    console.log('update_learning_content got user: ' + user.uid)
 
-	    // var query = db.collection('notes').where('user', '==', user.uid);
-	    var query = db.collection('notes').where('user', '==', user.uid).orderBy('spacingLastDue');
-	    query.get()
-	    	.then
-	    	(
-	    		function(querySnapshot) 
-	    		{
-	    			querySnapshot.forEach
-	    			(
-	    				function(doc) 
-	    				{
-	    				console.log(doc.id, ' => ', doc.data());
-	    				}
-	    			);
-	    		}
-	    	)
-	    	.catch
-	    	(
-	    		function(error)
-	    		{
-	    			console.log('Error getting documents: ', error);
-	    		}
-	    	);
-	  } else {
-	    console.log('update_learning_content got user: ' + 'NONE')
-	  }
-	});
+// 	    // var query = db.collection('notes').where('user', '==', user.uid);
+// 	    var query = db.collection('notes').where('user', '==', user.uid).orderBy('spacingLastDue');
+// 	    query.get()
+// 	    	.then
+// 	    	(
+// 	    		function(querySnapshot) 
+// 	    		{
+// 	    			querySnapshot.forEach
+// 	    			(
+// 	    				function(doc) 
+// 	    				{
+// 	    				console.log(doc.id, ' => ', doc.data());
+// 	    				}
+// 	    			);
+// 	    		}
+// 	    	)
+// 	    	.catch
+// 	    	(
+// 	    		function(error)
+// 	    		{
+// 	    			console.log('Error getting documents: ', error);
+// 	    		}
+// 	    	);
+// 	  } else {
+// 	    console.log('update_learning_content got user: ' + 'NONE')
+// 	  }
+// 	});
 
     // $.ajax(
     // 	{
@@ -78,16 +78,6 @@ function update_learning_content(thisObj)
 // and will receive updates in real time. [Have to do it this way.
 // Can't just get the list of cards all at once, because failed cards
 // need to be able to pop up again]
-
-getAllCards = function(renderer)
-{
-  var query = db
-  	.collection('notes')
-  	.where('user', '==', user.uid)
-  	.orderBy('spacingLastDue')
-  	.limit(1);
-  this.getDocumentsInCardQuery(query, renderer);
-}
 
 // getDocumentsInCardQuery = function(query, renderer)
 // {
@@ -139,6 +129,21 @@ getDocumentsInCardQuery = function(thisObj)
 	});
 };
 
+$("#showAnswerButton").click
+(
+	function()
+	{
+		console.log("showAnswerButton click");
+		$("#clozedContent").hide();
+		$("#originalContent").show();
+
+		$("#postNote").show();
+
+		$("showAnswerButton").hide();
+		$("setIntervalDiv").show();
+	}
+)
+
 // active_tf: true
 // clozeNum: 1
 // contentClozed: "政府的[decision]引起了很多不同的指責。"
@@ -160,21 +165,5 @@ $(this).ready
 	function() {
 		getDocumentsInCardQuery($(this));
 		console.log('Done.')
-	}
-)
-
-$("#showAnswerButton").click
-(
-	function()
-	{
-		console.log("showAnswerButton click");
-		$("#clozedContent").hide();
-		$("#originalContent").show();
-
-		$("#preNote").hide();
-		$("#postNote").show();
-
-		$("showAnswerButton").hide();
-		$("setIntervalDiv").show();
 	}
 )
