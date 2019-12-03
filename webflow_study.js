@@ -144,11 +144,12 @@ $("showAnswerButton").click
 	function()
 	{
 			$("#clozedContent").hide();
+			$("#originalContent").show();
 
-			$("#postNote").show();
 			$("#preNote").hide();
+			$("#postNote").show();
 
-			$("answerButtons").show();
+			$("showAnswerButton").hide();
 			$("setIntervalDiv").show();
 	}
 )
