@@ -1,8 +1,3 @@
-function query_cards(thisObj)
-{
-
-}
-
 function update_learning_content(thisObj)
 {
 	// Task 2: using Firestore, retrieve next card and update values in boxes
@@ -109,6 +104,7 @@ getAllCards = function(renderer)
 // 	});
 // };
 
+
 getDocumentsInCardQuery = function(thisObj)
 {
 	var db = firebase.firestore();
@@ -133,6 +129,8 @@ getDocumentsInCardQuery = function(thisObj)
 					$("#clozedContent").html(doc.get('contentClozed'));
 					$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
 					$("#preNote").html(doc.get('notePre'));
+					$("#postNote").html(doc.get('notePost'));
+					$("#originalContent").html(doc.get('contentOriginal'));
 				});
 			});
 		} else {
@@ -140,6 +138,35 @@ getDocumentsInCardQuery = function(thisObj)
 		}
 	});
 };
+
+$("showAnswerButton").click
+(
+	function()
+	{
+			$("#clozedContent").hide();
+
+			$("#postNote").show();
+			$("#preNote").hide();
+
+			$("answerButtons").show();
+			$("setIntervalDiv").show();
+	}
+)
+
+// active_tf: true
+// clozeNum: 1
+// contentClozed: "政府的[decision]引起了很多不同的指責。"
+// contentNativeTranslation: "The government's decision gave rise to a lot of criticism."
+// contentOriginal: "政府的決定引起了很多不同的指責。"
+// note: "yGhZnyAQ3SEvGKAxniX0"
+// notePost: "This is a sample post-note, but mod for card 1."
+// notePre: "This is a sample pre-note for card 1"
+// spacingDue: uo {seconds: 1575223340, nanoseconds: 372809000}
+// spacingLastDue: uo {seconds: 1575216140, nanoseconds: 372809000}
+// spacingLastInterval: 50
+// spacingLastMultiplier: 2
+// user: "S4BpEFgxflezIHhuzUH19819mg93"
+// __proto__: Object
 
 
 $(this).ready
