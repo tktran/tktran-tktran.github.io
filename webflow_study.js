@@ -140,7 +140,7 @@ $("#showAnswerButton").click
 		$("#postNote").show();
 
 		$("#showAnswerDiv").hide();
-		$("#setIntervalDiv").show();
+		$("#setIntervalGrid").show();
 	}
 )
 
