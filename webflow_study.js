@@ -88,7 +88,7 @@ function setLearningDifficulty(difficulty) {
 			console.log('Document successfully written (postnote)');
 		})
 		.catch(function() {
-			console.log('WTF? Didn''t work!');
+			console.log('WTF? Doc was not written!');
 		});
 }
 
