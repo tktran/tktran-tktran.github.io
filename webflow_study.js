@@ -56,6 +56,7 @@ $("#buttonAgain").click
 	function()
 	{
 		console.log("buttonAgain click.");
+		setLearningDifficulty("Again")
 	}
 )
 
@@ -64,6 +65,8 @@ $("#buttonGood").click
 	function()
 	{
 		console.log("buttonGood click.");
+		setLearningDifficulty("Good")
+
 	}
 )
 
@@ -72,6 +75,7 @@ $("#buttonBest").click
 	function()
 	{
 		console.log("buttonBest click.");
+		setLearningDifficulty("Best")
 	}
 )
 
