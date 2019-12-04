@@ -84,7 +84,7 @@ $("#buttonBest").click
 function setLearningDifficulty(difficulty) {
 	console.log('About to set card w/ id', currentCardId, ' to difficulty ', difficulty);
 	console.log('Doc ref is: ', currentCardDocRef);
-	currentCardDocRef.set( {notePost: 'Look, I modified the postnote.'}, {merge: true} )
+	currentCardDocRef.update( {notePost: 'Look, I modified the postnote.'})
 		.then(function() {
 			console.log('Document successfully written (postnote)');
 		})
