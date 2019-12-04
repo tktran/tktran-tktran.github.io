@@ -1,4 +1,5 @@
 var currentCardId = "NA";
+var currentCardDocRef = null;
 
 attachCardSnapshotListener = function(thisObj)
 {
@@ -22,6 +23,7 @@ attachCardSnapshotListener = function(thisObj)
 				snapshot.forEach(function(doc) {
 					console.log(doc.id, ' -> ', doc.data());
 					currentCardId = doc.id;
+					currentCardDocRef = doc;
 
 					$("#clozedContent").html(doc.get('contentClozed'));
 					$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
@@ -81,6 +83,7 @@ $("#buttonBest").click
 
 function setLearningDifficulty(difficulty) {
 	console.log('About to set card w/ id', currentCardId, ' to difficulty ', difficulty);
+	currentCardDocRef.set( {'notePost': 'Look, I modified the postnote.'} );
 }
 
 // active_tf: true
