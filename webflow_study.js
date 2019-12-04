@@ -84,7 +84,7 @@ function setLearningDifficulty(difficulty) {
 	console.log('About to set card w/ id', currentCardId, ' to difficulty ', difficulty);
 	console.log('Doc ref is: ', currentCardDocRef);
 	// currentCardDocRef.update( {notePost: 'Look, I modified the postnote.'})
-	db.collection('cards').doc(currentCardId).set({notePost: 'Look, I modified the postnote.'})
+	db.collection('cards').doc(currentCardId).set({notePost: 'Look, I modified the postnote.'}, {merge: true})
 		.then(function() {
 			console.log('Document successfully written (postnote)');
 		})
