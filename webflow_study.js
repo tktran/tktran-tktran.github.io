@@ -58,7 +58,7 @@ $("#buttonAgain").click
 	function()
 	{
 		console.log("buttonAgain click.");
-		setLearningDifficulty("Again")
+		setLearningDifficulty("Again");
 	}
 )
 
@@ -67,7 +67,7 @@ $("#buttonGood").click
 	function()
 	{
 		console.log("buttonGood click.");
-		setLearningDifficulty("Good")
+		setLearningDifficulty("Good");
 
 	}
 )
@@ -77,13 +77,19 @@ $("#buttonBest").click
 	function()
 	{
 		console.log("buttonBest click.");
-		setLearningDifficulty("Best")
+		setLearningDifficulty("Best");
 	}
 )
 
 function setLearningDifficulty(difficulty) {
 	console.log('About to set card w/ id', currentCardId, ' to difficulty ', difficulty);
-	currentCardDocRef.set( {'notePost': 'Look, I modified the postnote.'} );
+	currentCardDocRef.set( {notePost: 'Look, I modified the postnote.'} )
+		.then(function() {
+			console.log('Document successfully written (postnote)');
+		})
+		.catch(function() {
+			console.log('WTF? Didn''t work!');
+		});
 }
 
 // active_tf: true
