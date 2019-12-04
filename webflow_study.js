@@ -80,7 +80,7 @@ $("#buttonBest").click
 )
 
 function setLearningDifficulty(difficulty) {
-	console.log('About to set card w/ id', currentCardId, ' to difficulty ' difficulty);
+	console.log('About to set card w/ id', currentCardId, ' to difficulty ', difficulty);
 }
 
 // active_tf: true
