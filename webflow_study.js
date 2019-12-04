@@ -1,10 +1,9 @@
 var currentCardId = "NA";
 var currentCardDocRef = null;
+var db = firebase.firestore();
 
 attachCardSnapshotListener = function(thisObj)
 {
-	var db = firebase.firestore();
-
 	firebase.auth().onAuthStateChanged(function(user) {
 	  if (user) {
 	    console.log('update_learning_content got user: ' + user.uid)
