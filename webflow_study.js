@@ -84,13 +84,13 @@ $("#buttonBest").click
 function setLearningDifficulty(difficulty) {
 	console.log('About to set card w/ id', currentCardId, ' to difficulty ', difficulty);
 	console.log('Doc ref is: ', currentCardDocRef);
-	currentCardDocRef.set( {notePost: 'Look, I modified the postnote.'}, {merge: true} );
-		// .then(function() {
-		// 	console.log('Document successfully written (postnote)');
-		// })
-		// .catch(function() {
-		// 	console.log('WTF? Doc was not written!');
-		// });
+	currentCardDocRef.set( {notePost: 'Look, I modified the postnote.'}, {merge: true} )
+		.then(function() {
+			console.log('Document successfully written (postnote)');
+		})
+		.catch(function() {
+			console.log('WTF? Doc was not written!');
+		});
 }
 
 // active_tf: true
