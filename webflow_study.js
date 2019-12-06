@@ -3,7 +3,10 @@ var currentCardLastDue = null;
 var currentCardLastInterval = null;
 var currentCardLastMultiplier = null;
 
+const settings = {timestampsInSnapshots: true};
+
 var db = firebase.firestore();
+db.settings(settings);
 
 attachCardSnapshotListener = function(thisObj)
 {
@@ -25,7 +28,9 @@ attachCardSnapshotListener = function(thisObj)
 				snapshot.forEach(function(doc) {
 					console.log(doc.id, ' -> ', doc.data());
 					currentCardId = doc.id;
-
+					currentCardLastDue = doc.get('spacingLastInterval').toDate();
+					console.log('currentCardLastDue: ', currentCardLastDue);
+					
 					$("#clozedContent").html(doc.get('contentClozed'));
 					$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
 					$("#preNote").html(doc.get('notePre'));
@@ -84,7 +89,7 @@ $("#buttonBest").click
 
 function setLearningDifficulty(difficulty) {
 	console.log('About to set card w/ id', currentCardId, ' to difficulty ', difficulty);
-
+	// console.log('The lastInterval is ', 
 	// currentCardAsObject['testSetting'] = 'Look ma';
 	// https://stackoverflow.com/questions/49682327/how-to-update-a-single-firebase-firestore-document
 	updates = {};
