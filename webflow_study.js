@@ -1,5 +1,5 @@
 var currentCardId = "NA";
-var currentCardToValue = null;
+var currentCardAsObject = null;
 // var currentCardLastDue = null;
 // var currentCardLastInterval = null;
 // var currentCardLastMultiplier = null;
@@ -26,7 +26,7 @@ attachCardSnapshotListener = function(thisObj)
 				snapshot.forEach(function(doc) {
 					console.log(doc.id, ' -> ', doc.data());
 					currentCardId = doc.id;
-					currentCardToValue = doc;
+					currentCardAsObject = doc;
 
 					$("#clozedContent").html(doc.get('contentClozed'));
 					$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
@@ -86,9 +86,10 @@ $("#buttonBest").click
 
 function setLearningDifficulty(difficulty) {
 	console.log('About to set card w/ id', currentCardId, ' to difficulty ', difficulty);
-	console.log('Doc (as value?) is: ', currentCardToValue);
+	console.log('Doc (as value?) is: ', currentCardAsObject);
 
-	// currentCardToValue.update( {notePost: 'Look, I modified the postnote.'})
+	currentCardAsObject['testSetting'] = 'Look ma';
+	// currentCardAsObject.update( {notePost: 'Look, I modified the postnote.'})
 
 	// db.collection('cards').doc(currentCardId).set({notePost: 'Look, I modified the postnote.'}, {merge: true})
 	// 	.then(function() {
