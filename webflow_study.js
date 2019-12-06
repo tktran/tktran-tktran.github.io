@@ -100,10 +100,10 @@ function setLearningDifficulty(difficulty) {
 	// 	});
 }
 
-function calculateNextDue(spacingLastDue, spacingLastInterval, spacingLastMultiplier)
-{
-	spacingLastDue spacingLastInterval * spacingLastMultiplier
-}
+// function calculateNextDue(spacingLastDue, spacingLastInterval, spacingLastMultiplier)
+// {
+// 	spacingLastDue spacingLastInterval * spacingLastMultiplier
+// }
 // active_tf: true
 // clozeNum: 1
 // contentClozed: "政府的[decision]引起了很多不同的指責。"
