@@ -89,7 +89,10 @@ function setLearningDifficulty(difficulty) {
 	console.log('Doc (as value?) is: ', currentCardAsObject);
 
 	// currentCardAsObject['testSetting'] = 'Look ma';
-	currentCardAsObject.update( {notePost: 'Look, I modified the postnote.'})
+	// https://stackoverflow.com/questions/49682327/how-to-update-a-single-firebase-firestore-document
+	updates = {};
+	updates.notePost = 'Look, I modified the postnote on Dec 6.';
+	currentCardAsObject.update( updates );
 
 	// db.collection('cards').doc(currentCardId).set({notePost: 'Look, I modified the postnote.'}, {merge: true})
 	// 	.then(function() {
