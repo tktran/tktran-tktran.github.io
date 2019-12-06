@@ -3,7 +3,7 @@ var currentCardLastDue = null;
 var currentCardLastInterval = null;
 var currentCardLastMultiplier = null;
 
-const settings = {timestampsInSnapshots: true};
+const settings = {};
 
 var db = firebase.firestore();
 db.settings(settings);
