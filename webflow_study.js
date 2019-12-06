@@ -1,4 +1,6 @@
 var currentCardId = "NA";
+var currentCardRef: DocumentReference!
+	
 var currentCardLastDue = null;
 var currentCardLastInterval = null;
 var currentCardLastMultiplier = null;
@@ -23,8 +25,10 @@ attachCardSnapshotListener = function(thisObj)
 					return;
 				}
 				snapshot.forEach(function(doc) {
-					console.log(doc.id, ' -> ', doc.data());
-					currentCardId = doc.id;
+					self.currentCardId = doc.id;
+					self.currentCardRef = doc;
+
+					console.log('currentCardId is: ', currentCardId, ' while ref is ', currentCardRef);
 
 					$("#clozedContent").html(doc.get('contentClozed'));
 					$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
