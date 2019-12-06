@@ -89,8 +89,8 @@ function setLearningDifficulty(difficulty) {
 	// https://stackoverflow.com/questions/49682327/how-to-update-a-single-firebase-firestore-document
 	updates = {};
 	updates.notePost = 'Look, I modified the postnote on Dec 6.';
-	db.collection('cards').where('id', '==', currentCardId)
-	  .get()
+	db.collection('cards')
+	  .get(currentCardId)
 	  .then(function(querySnapshot) {
 	      querySnapshot.forEach(function(doc) {
 	          console.log(doc.id, " => ", doc.data());
