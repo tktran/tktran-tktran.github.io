@@ -28,9 +28,9 @@ attachCardSnapshotListener = function(thisObj)
 				snapshot.forEach(function(doc) {
 					console.log(doc.id, ' -> ', doc.data());
 					currentCardId = doc.id;
-					currentCardLastDue = doc.get('spacingLastInterval').toDate();
+					currentCardLastDue = doc.get('spacingLastInterval');
 					console.log('currentCardLastDue: ', currentCardLastDue);
-					
+
 					$("#clozedContent").html(doc.get('contentClozed'));
 					$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
 					$("#preNote").html(doc.get('notePre'));
