@@ -29,7 +29,14 @@ attachCardSnapshotListener = function(thisObj)
 					console.log(doc.id, ' -> ', doc.data());
 					currentCardId = doc.id;
 					currentCardLastDue = doc.get('spacingLastDue').toDate();
+					currentCardNextDueAgain = moment(currentCardLastDue).add(moment.duration({'hours': 1}));
+					currentCardNextDueNormal = moment(currentCardLastDue).add(moment.duration({'days': 1}));
+					currentCardNextDueEasy = moment(currentCardLastDue).add(moment.duration({'days': 2}));
+
 					console.log('currentCardLastDue: ', currentCardLastDue);
+					console.log('currentCardNextDueAgain: ', currentCardNextDueAgain);
+					console.log('currentCardNextDueNormal: ', currentCardNextDueNormal);
+					console.log('currentCardNextDueEasy: ', currentCardNextDueEasy);
 
 					$("#clozedContent").html(doc.get('contentClozed'));
 					$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
