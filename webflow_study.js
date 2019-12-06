@@ -1,5 +1,9 @@
 var currentCardId = "NA";
-var currentCardDocRef = null;
+var currentCardToValue = null;
+// var currentCardLastDue = null;
+// var currentCardLastInterval = null;
+// var currentCardLastMultiplier = null;
+
 var db = firebase.firestore();
 
 attachCardSnapshotListener = function(thisObj)
@@ -22,7 +26,7 @@ attachCardSnapshotListener = function(thisObj)
 				snapshot.forEach(function(doc) {
 					console.log(doc.id, ' -> ', doc.data());
 					currentCardId = doc.id;
-					currentCardDocRef = doc;
+					currentCardToValue = doc;
 
 					$("#clozedContent").html(doc.get('contentClozed'));
 					$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
@@ -82,17 +86,24 @@ $("#buttonBest").click
 
 function setLearningDifficulty(difficulty) {
 	console.log('About to set card w/ id', currentCardId, ' to difficulty ', difficulty);
-	console.log('Doc ref is: ', currentCardDocRef);
-	// currentCardDocRef.update( {notePost: 'Look, I modified the postnote.'})
-	db.collection('cards').doc(currentCardId).set({notePost: 'Look, I modified the postnote.'}, {merge: true})
-		.then(function() {
-			console.log('Document successfully written (postnote)');
-		})
-		.catch(function(error) {
-			console.log('WTF? Doc was not written! Error was ', error);
-		});
+	console.log('Doc (as value?) is: ', currentCardToValue);
+
+	// currentCardToValue.update( {notePost: 'Look, I modified the postnote.'})
+
+	// db.collection('cards').doc(currentCardId).set({notePost: 'Look, I modified the postnote.'}, {merge: true})
+	// 	.then(function() {
+	// 		console.log('Document successfully written (postnote)');
+	// 		console.log('Also, the spacingLastDue for this card was', spacingLastDue)
+	// 	})
+	// 	.catch(function(error) {
+	// 		console.log('WTF? Doc was not written! Error was ', error);
+	// 	});
 }
 
+function calculateNextDue(spacingLastDue, spacingLastInterval, spacingLastMultiplier)
+{
+	spacingLastDue spacingLastInterval * spacingLastMultiplier
+}
 // active_tf: true
 // clozeNum: 1
 // contentClozed: "政府的[decision]引起了很多不同的指責。"
