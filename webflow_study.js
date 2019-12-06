@@ -1,8 +1,7 @@
 var currentCardId = "NA";
-var currentCardAsObject = null;
-// var currentCardLastDue = null;
-// var currentCardLastInterval = null;
-// var currentCardLastMultiplier = null;
+var currentCardLastDue = null;
+var currentCardLastInterval = null;
+var currentCardLastMultiplier = null;
 
 var db = firebase.firestore();
 
@@ -26,7 +25,6 @@ attachCardSnapshotListener = function(thisObj)
 				snapshot.forEach(function(doc) {
 					console.log(doc.id, ' -> ', doc.data());
 					currentCardId = doc.id;
-					currentCardAsObject = doc;
 
 					$("#clozedContent").html(doc.get('contentClozed'));
 					$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
@@ -86,13 +84,22 @@ $("#buttonBest").click
 
 function setLearningDifficulty(difficulty) {
 	console.log('About to set card w/ id', currentCardId, ' to difficulty ', difficulty);
-	console.log('Doc (as value?) is: ', currentCardAsObject);
 
 	// currentCardAsObject['testSetting'] = 'Look ma';
 	// https://stackoverflow.com/questions/49682327/how-to-update-a-single-firebase-firestore-document
 	updates = {};
 	updates.notePost = 'Look, I modified the postnote on Dec 6.';
-	currentCardAsObject.update( updates );
+	db.collection('cards').where('id', '==', currentCardId)
+	  .get()
+	  .then(function(querySnapshot) {
+	      querySnapshot.forEach(function(doc) {
+	          console.log(doc.id, " => ", doc.data());
+	          db.collection('cards').doc(currentCardId).update(updates);
+	      });
+		 })
+	  .catch(function(error) {
+	  	console.log('WTF? Dec 6 update failed.');
+	  });
 
 	// db.collection('cards').doc(currentCardId).set({notePost: 'Look, I modified the postnote.'}, {merge: true})
 	// 	.then(function() {
