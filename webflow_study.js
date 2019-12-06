@@ -30,7 +30,7 @@ attachCardSnapshotListener = function(thisObj)
 					currentCardId = doc.id;
 					currentCardLastDue = doc.get('spacingLastDue').toDate();
 
-					currentCardNextDueAgain = moment(currentCardLastDue)
+					currentCardNextDueAgain = moment(currentCardLastDue);
 					currentCardNextDueAgain.add(1, 'hours');
 
 					currentCardNextDueNormal = moment(currentCardLastDue);
