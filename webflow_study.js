@@ -1,6 +1,4 @@
 var currentCardId = "NA";
-var currentCardRef: DocumentReference!
-	
 var currentCardLastDue = null;
 var currentCardLastInterval = null;
 var currentCardLastMultiplier = null;
@@ -25,10 +23,8 @@ attachCardSnapshotListener = function(thisObj)
 					return;
 				}
 				snapshot.forEach(function(doc) {
-					self.currentCardId = doc.id;
-					self.currentCardRef = doc;
-
-					console.log('currentCardId is: ', currentCardId, ' while ref is ', currentCardRef);
+					console.log(doc.id, ' -> ', doc.data());
+					currentCardId = doc.id;
 
 					$("#clozedContent").html(doc.get('contentClozed'));
 					$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
@@ -93,8 +89,8 @@ function setLearningDifficulty(difficulty) {
 	// https://stackoverflow.com/questions/49682327/how-to-update-a-single-firebase-firestore-document
 	updates = {};
 	updates.notePost = 'Look, I modified the postnote on Dec 6.';
-	db.collection('cards')
-	  .get(currentCardId)
+	db.collection('cards').document(currentCardId)
+	  .get()
 	  .then(function(querySnapshot) {
 	      querySnapshot.forEach(function(doc) {
 	          console.log(doc.id, " => ", doc.data());
