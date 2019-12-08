@@ -36,18 +36,21 @@ attachCardSnapshotListener = function(thisObj)
 					console.log('currentCardLastDue: ', currentCardLastDue);
 
 					// figure out why this isn't working
-					currentCardNextDueAgain = moment(currentCardLastDue);
-					currentCardNextDueAgain.add(1, 'hours');
+					temp_moment = moment(currentCardLastDue);
+					temp_moment.add(1, 'hours');
+					currentCardNextDueAgain = temp_moment.toDate();
 
-					currentCardNextDueGood = moment(currentCardLastDue);
-					currentCardNextDueGood.add(1, 'days');
+					temp_moment = moment(currentCardLastDue);
+					temp_moment.add(1, 'days');
+					currentCardNextDueGood = temp_moment.toDate();
 
-					currentCardNextDueBest = moment(currentCardLastDue);
-					currentCardNextDueBest.add(1, 'weeks');
+					temp_moment = moment(currentCardLastDue);
+					temp_moment.add(1, 'weeks');
+					currentCardNextDueBest = temp_moment.toDate();
 
-					console.log('currentCardNextDueAgain: ', currentCardNextDueAgain.toDate());
-					console.log('currentCardNextDueGood: ', currentCardNextDueGood.toDate());
-					console.log('currentCardNextDueBest: ', currentCardNextDueBest.toDate());
+					console.log('currentCardNextDueAgain: ', currentCardNextDueAgain);
+					console.log('currentCardNextDueGood: ', currentCardNextDueGood);
+					console.log('currentCardNextDueBest: ', currentCardNextDueBest);
 
 					$("#clozedContent").html(doc.get('contentClozed'));
 					$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
