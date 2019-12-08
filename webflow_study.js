@@ -3,6 +3,10 @@ var currentCardLastDue = null;
 var currentCardLastInterval = null;
 var currentCardLastMultiplier = null;
 
+var currentCardNextDueAgain = null;
+var currentCardNextDueGood = null;
+var currentCardNextDueBest = null;
+
 const settings = {};
 
 var db = firebase.firestore();
@@ -35,14 +39,15 @@ attachCardSnapshotListener = function(thisObj)
 					currentCardNextDueAgain = moment(currentCardLastDue);
 					currentCardNextDueAgain.add(1, 'hours');
 
-					currentCardNextDueNormal = moment(currentCardLastDue);
-					currentCardNextDueNormal.add(1, 'days');
+					currentCardNextDueGood = moment(currentCardLastDue);
+					currentCardNextDueGood.add(1, 'days');
 
-					currentCardNextDueEasy = moment(currentCardLastDue);
-					currentCardNextDueEasy.add(1, 'weeks');
+					currentCardNextDueBest = moment(currentCardLastDue);
+					currentCardNextDueBest.add(1, 'weeks');
 
-					console.log('currentCardNextDueNormal: ', currentCardNextDueNormal.toDate());
-					console.log('currentCardNextDueEasy: ', currentCardNextDueEasy.toDate());
+					console.log('currentCardNextDueAgain: ', currentCardNextDueAgain.toDate());
+					console.log('currentCardNextDueGood: ', currentCardNextDueGood.toDate());
+					console.log('currentCardNextDueBest: ', currentCardNextDueBest.toDate());
 
 					$("#clozedContent").html(doc.get('contentClozed'));
 					$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
@@ -107,6 +112,20 @@ function setLearningDifficulty(difficulty) {
 	// https://stackoverflow.com/questions/49682327/how-to-update-a-single-firebase-firestore-document
 	updates = {};
 	updates.notePost = 'Look, I modified the postnote on Dec 6.';
+
+	if (difficulty == 'Again') 
+	{
+			updates.spacingDue = currentCardNextDueAgain;
+	} 
+	else if (difficulty = 'Good') 
+	{
+		updates.spacingDue = currentCardNextDueGood;
+	}
+	else 
+	{
+		updates.spacingDue = currentCardNextDueBest;
+	}
+
 	db.collection('cards').doc(currentCardId).update(updates);
 	  // .get()
 	  // .then(function(querySnapshot) {
