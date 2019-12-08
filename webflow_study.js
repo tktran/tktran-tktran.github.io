@@ -114,7 +114,7 @@ function setLearningDifficulty(difficulty) {
 	// currentCardAsObject['testSetting'] = 'Look ma';
 	// https://stackoverflow.com/questions/49682327/how-to-update-a-single-firebase-firestore-document
 	updates = {};
-	updates.notePost = 'Look, I modified the postnote on Dec 6.';
+	updates.notePost = 'Look, I modified the postnote on Dec 8.';
 
 	if (difficulty == 'Again') 
 	{
