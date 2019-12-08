@@ -120,7 +120,7 @@ function setLearningDifficulty(difficulty) {
 		console.log('About to set card w/ id', currentCardId, ' to Again.');
 		updates.spacingDue = currentCardNextDueAgain;
 	} 
-	else if (difficulty = 'Good') 
+	else if (difficulty == 'Good') 
 	{
 		console.log('About to set card w/ id', currentCardId, ' to Good.');
 		updates.spacingDue = currentCardNextDueGood;
