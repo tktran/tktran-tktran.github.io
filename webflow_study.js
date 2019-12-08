@@ -129,7 +129,7 @@ function setLearningDifficulty(difficulty) {
 		updates.spacingDue = currentCardNextDueBest;
 	}
 
-	db.collection('cards').doc(currentCardId).update(updates);
+	db.collection('cards').doc(currentCardId).update(updates)
 		.then(function() {
 			console.log('Document successfully written (postnote and spacingDue)');
 		})
