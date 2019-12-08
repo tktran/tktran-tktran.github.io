@@ -109,7 +109,6 @@ $("#buttonBest").click
 )
 
 function setLearningDifficulty(difficulty) {
-	console.log('About to set card w/ id', currentCardId, ' to difficulty ', difficulty);
 	// console.log('The lastInterval is ', 
 	// currentCardAsObject['testSetting'] = 'Look ma';
 	// https://stackoverflow.com/questions/49682327/how-to-update-a-single-firebase-firestore-document
@@ -118,20 +117,23 @@ function setLearningDifficulty(difficulty) {
 
 	if (difficulty == 'Again') 
 	{
+		console.log('About to set card w/ id', currentCardId, ' to again');
 		updates.spacingDue = currentCardNextDueAgain;
 	} 
 	else if (difficulty = 'Good') 
 	{
+		console.log('About to set card w/ id', currentCardId, ' to Good');
 		updates.spacingDue = currentCardNextDueGood;
 	}
 	else 
 	{
+		console.log('About to set card w/ id', currentCardId, ' to Best');
 		updates.spacingDue = currentCardNextDueBest;
 	}
 
 	db.collection('cards').doc(currentCardId).update(updates)
 		.then(function() {
-			console.log(currentCardId, ': ', updates.spacingDue);
+			console.log('Success. ', currentCardId, ': ', updates.spacingDue);
 		})
 		.catch(function(error) {
 			console.log('WTF? Doc was not written! Error was ', error);
