@@ -130,25 +130,12 @@ function setLearningDifficulty(difficulty) {
 	}
 
 	db.collection('cards').doc(currentCardId).update(updates);
-	  // .get()
-	  // .then(function(querySnapshot) {
-	  //     querySnapshot.forEach(function(doc) {
-	  //         console.log(doc.id, " => ", doc.data());
-	  //         db.collection('cards').doc(currentCardId).update(updates);
-	  //     });
-		 // })
-	  // .catch(function(error) {
-	  // 	console.log('WTF? Dec 6 update failed.');
-	  // });
-
-	// db.collection('cards').doc(currentCardId).set({notePost: 'Look, I modified the postnote.'}, {merge: true})
-	// 	.then(function() {
-	// 		console.log('Document successfully written (postnote)');
-	// 		console.log('Also, the spacingLastDue for this card was', spacingLastDue)
-	// 	})
-	// 	.catch(function(error) {
-	// 		console.log('WTF? Doc was not written! Error was ', error);
-	// 	});
+		.then(function() {
+			console.log('Document successfully written (postnote and spacingDue)');
+		})
+		.catch(function(error) {
+			console.log('WTF? Doc was not written! Error was ', error);
+		});
 }
 
 // function calculateNextDue(spacingLastDue, spacingLastInterval, spacingLastMultiplier)
