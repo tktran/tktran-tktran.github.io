@@ -118,7 +118,7 @@ function setLearningDifficulty(difficulty) {
 
 	if (difficulty == 'Again') 
 	{
-			updates.spacingDue = currentCardNextDueAgain;
+		updates.spacingDue = currentCardNextDueAgain;
 	} 
 	else if (difficulty = 'Good') 
 	{
@@ -131,7 +131,7 @@ function setLearningDifficulty(difficulty) {
 
 	db.collection('cards').doc(currentCardId).update(updates)
 		.then(function() {
-			console.log('Document successfully written (postnote and spacingDue)');
+			console.log(currentCardId, ': ', updates.spacingDue);
 		})
 		.catch(function(error) {
 			console.log('WTF? Doc was not written! Error was ', error);
