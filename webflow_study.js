@@ -14,57 +14,57 @@ db.settings(settings);
 
 attachCardSnapshotListener = function(thisObj)
 {
-	firebase.auth().onAuthStateChanged(function(user) {
-	  if (user) {
-	    console.log('update_learning_content got user: ' + user.uid)
-	    
-	    var query = db
-	    	.collection('cards')
-	    	.where('user', '==', user.uid)
-	    	.orderBy('spacingDue')
-	    	.limit(1);
+	var user = firebase.auth().currentUser;
+  if (user) {
+    console.log('update_learning_content got user: ' + user.uid)
+    
+    var query = db
+    	.collection('cards')
+    	.where('user', '==', user.uid)
+    	.orderBy('spacingDue')
+    	.limit(1);
 
-			query.onSnapshot(function(snapshot) {
-				if (!snapshot.size) {
-					console.log('snapshot empty')
-					return;
-				}
-				snapshot.forEach(function(doc) {
-					console.log(doc.id, ' -> ', doc.data());
-					currentCardId = doc.id;
-					currentCardLastDue = doc.get('spacingLastDue').toDate();
-					console.log('currentCardLastDue: ', currentCardLastDue);
+		query.onSnapshot(function(snapshot) {
+			if (!snapshot.size) {
+				console.log('snapshot empty')
+				return;
+			}
+			snapshot.forEach(function(doc) {
+				console.log(doc.id, ' -> ', doc.data());
+				currentCardId = doc.id;
+				currentCardLastDue = doc.get('spacingLastDue').toDate();
+				console.log('currentCardLastDue: ', currentCardLastDue);
 
-					// figure out why this isn't working
-					temp_moment = moment(currentCardLastDue);
-					temp_moment.add(1, 'hours');
-					currentCardNextDueAgain = temp_moment.toDate();
+				// figure out why this isn't working
+				temp_moment = moment(currentCardLastDue);
+				temp_moment.add(1, 'hours');
+				currentCardNextDueAgain = temp_moment.toDate();
 
-					temp_moment = moment(currentCardLastDue);
-					temp_moment.add(1, 'days');
-					currentCardNextDueGood = temp_moment.toDate();
+				temp_moment = moment(currentCardLastDue);
+				temp_moment.add(1, 'days');
+				currentCardNextDueGood = temp_moment.toDate();
 
-					temp_moment = moment(currentCardLastDue);
-					temp_moment.add(1, 'weeks');
-					currentCardNextDueBest = temp_moment.toDate();
+				temp_moment = moment(currentCardLastDue);
+				temp_moment.add(1, 'weeks');
+				currentCardNextDueBest = temp_moment.toDate();
 
-					console.log('currentCardNextDueAgain: ', currentCardNextDueAgain);
-					console.log('currentCardNextDueGood: ', currentCardNextDueGood);
-					console.log('currentCardNextDueBest: ', currentCardNextDueBest);
+				console.log('currentCardNextDueAgain: ', currentCardNextDueAgain);
+				console.log('currentCardNextDueGood: ', currentCardNextDueGood);
+				console.log('currentCardNextDueBest: ', currentCardNextDueBest);
 
-					$("#clozedContent").html(doc.get('contentClozed'));
-					$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
-					$("#preNote").html(doc.get('notePre'));
-					$("#postNote").html(doc.get('notePost'));
-					$("#originalContent").html(doc.get('contentOriginal'));
-				});
+				$("#clozedContent").html(doc.get('contentClozed'));
+				$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
+				$("#preNote").html(doc.get('notePre'));
+				$("#postNote").html(doc.get('notePost'));
+				$("#originalContent").html(doc.get('contentOriginal'));
 			});
-		} else {
-			console.log('no auth user')
-		}
-	});
+		});
+	} else {
+		console.log('no auth user')
+	}
 };
 
+attachCardSnapshotListener =
 $("#showAnswerButton").click
 (
 	function()
@@ -142,8 +142,13 @@ function setLearningDifficulty(difficulty) {
 
 $(this).ready
 (
-	function() {
-		attachCardSnapshotListener($(this));
-		console.log('Done.')
-	}
+	firebase.auth().onAuthStateChanged(function(user) {
+		if (user) {
+			attachCardSnapshotListener($(this));
+		}
+		else
+		{
+			console.log('No user is signed in.');
+		}
+	})
 )
