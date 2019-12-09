@@ -21,7 +21,7 @@ attachCardSnapshotListener = function(thisObj)
 	    var query = db
 	    	.collection('cards')
 	    	.where('user', '==', user.uid)
-	    	.orderBy('spacingLastDue')
+	    	.orderBy('spacingDue')
 	    	.limit(1);
 
 			query.onSnapshot(function(snapshot) {
