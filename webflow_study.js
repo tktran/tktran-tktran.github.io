@@ -145,6 +145,7 @@ $(this).ready
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			attachCardSnapshotListener($(this));
+			console.log('this ready -> user snapshot attachment succeeded');
 		}
 		else
 		{
