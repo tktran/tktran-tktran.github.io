@@ -140,16 +140,13 @@ function setLearningDifficulty(difficulty) {
 		});
 }
 
-$(this).ready
-(
-	firebase.auth().onAuthStateChanged(function(user) {
-		if (user) {
-			console.log('this ready -> user snapshot attachment succeeded');
-			attachCardSnapshotListener($(this));
-		}
-		else
-		{
-			console.log('No user is signed in.');
-		}
-	})
-)
+firebase.auth().onAuthStateChanged(function(user) {
+	if (user) {
+		console.log('this ready -> user snapshot attachment succeeded');
+		attachCardSnapshotListener($(this));
+	}
+	else
+	{
+		console.log('No user is signed in.');
+	}
+})
