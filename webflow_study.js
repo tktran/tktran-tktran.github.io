@@ -64,7 +64,6 @@ attachCardSnapshotListener = function(thisObj)
 	}
 };
 
-attachCardSnapshotListener =
 $("#showAnswerButton").click
 (
 	function()
