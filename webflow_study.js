@@ -52,6 +52,13 @@ attachCardSnapshotListener = function(thisObj)
 				console.log('currentCardNextDueGood: ', currentCardNextDueGood);
 				console.log('currentCardNextDueBest: ', currentCardNextDueBest);
 
+				$("#clozedContent").show();
+				$("#originalContent").show();
+				$("#preNote").show();
+				$("#postNote").hide();
+				$("#showAnswerDiv").show();
+				$("#setIntervalGrid").hide();
+
 				$("#clozedContent").html(doc.get('contentClozed'));
 				$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
 				$("#preNote").html(doc.get('notePre'));
@@ -69,11 +76,10 @@ $("#showAnswerButton").click
 	function()
 	{
 		console.log("showAnswerButton click");
-		$("#clozedContent").hide();
-		$("#originalContent").show();
-
+		// $("#clozedContent").show();
+		// $("#originalContent").show();
+		// $("#preNote").show();
 		$("#postNote").show();
-
 		$("#showAnswerDiv").hide();
 		$("#setIntervalGrid").show();
 	}
