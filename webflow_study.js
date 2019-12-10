@@ -30,7 +30,7 @@ attachCardSnapshotListener = function(thisObj)
 				return;
 			}
 			snapshot.forEach(function(doc) {
-				console.log(doc.id, ' -> ', doc.data());
+				console.log('card snapshot listener was triggered w/', doc.id, ' -> ', doc.data());
 				currentCardId = doc.id;
 				currentCardLastDue = doc.get('spacingLastDue').toDate();
 				console.log('currentCardLastDue: ', currentCardLastDue);
