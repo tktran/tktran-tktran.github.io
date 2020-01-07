@@ -177,12 +177,17 @@ $("button.deckButton").on('click', function(event){
     event.stopImmediatePropagation();
     console.log($(this).data('hello'));
     //(... rest of your JS code)
+
+    var query = db
+    	.collection('starter_decks')
+    	.doc( $(this).data('hello') )
+    	.get()
 });
 
-var dataElement = $("button.deckButton");
+// var dataElement = $("button.deckButton");
 
-$(dataElement).each(function() {
-    console.log($(this).data('hello'));
-    // attachInitializeDeckListener($(this));
-});
+// $(dataElement).each(function() {
+//     console.log($(this).data('hello'));
+//     // attachInitializeDeckListener($(this));
+// });
 
