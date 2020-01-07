@@ -178,6 +178,8 @@ $("button.deckButton").on('click', function(event){
     //(... rest of your JS code)
 });
 
+var dataElement = $("button.deckButton");
+
 $(dataElement).each(function() {
     console.log($(this).data('hello'));
     // attachInitializeDeckListener($(this));
