@@ -21,6 +21,7 @@ attachCardSnapshotListener = function(thisObj)
     var query = db
     	.collection('cards')
     	.where('user', '==', user.uid)
+    	.where('spacingDue', '<=', )
     	.orderBy('spacingDue')
     	.limit(1);
 
@@ -35,7 +36,6 @@ attachCardSnapshotListener = function(thisObj)
 				currentCardLastDue = doc.get('spacingLastDue').toDate();
 				console.log('currentCardLastDue: ', currentCardLastDue);
 
-				// figure out why this isn't working
 				temp_moment = moment(currentCardLastDue);
 				temp_moment.add(1, 'hours');
 				currentCardNextDueAgain = temp_moment.toDate();
