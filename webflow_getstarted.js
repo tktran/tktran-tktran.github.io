@@ -175,6 +175,7 @@
 $("button.deckButton").on('click', function(event){
     event.stopPropagation();
     event.stopImmediatePropagation();
+    console.log($(this).data('hello'));
     //(... rest of your JS code)
 });
 
