@@ -7,10 +7,9 @@
 // var currentCardNextDueGood = null;
 // var currentCardNextDueBest = null;
 
-// const settings = {};
-
-// var db = firebase.firestore();
-// db.settings(settings);
+const settings = {};
+var db = firebase.firestore();
+db.settings(settings);
 
 // attachCardSnapshotListener = function(thisObj)
 // {
