@@ -177,10 +177,18 @@ $("button.deckButton").on('click', function(event){
     console.log($(this).data('hello'));
     //(... rest of your JS code)
 
-    var query = db
+    var docRef = db
     	.collection('starter_decks')
     	.doc( $(this).data('hello') )
-    	.get()
+    docRef.get().then( function(doc) {
+    	if (doc.exists) {
+    		console.log("Document data: ", doc.data());
+    	} else {
+    		console.log("No such document!");
+    	}
+    }).catch(function(error) {
+    	console.log("Error getting document: ", error);
+    });
 });
 
 // var dataElement = $("button.deckButton");
