@@ -166,8 +166,20 @@
 // 	}
 // )
 
-var dataElement = $("button.deckButton");
+// attachInitializeDeckListener = function(thisObj)
+// {
+
+// }
+
+// https://stackoverflow.com/questions/5563783/jquery-class-click-multiple-elements-click-event-once
+$("button.deckButton").on('click', function(event){
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    //(... rest of your JS code)
+});
 
 $(dataElement).each(function() {
     console.log($(this).data('hello'));
+    // attachInitializeDeckListener($(this));
 });
+
