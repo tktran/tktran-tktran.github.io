@@ -177,18 +177,28 @@ $("button.deckButton").on('click', function(event){
     console.log($(this).data('hello'));
     //(... rest of your JS code)
 
-    var docRef = db
+    // You put the retrieval of the collection in the docRef, not later after already getting the doc
+    var notesCollectionRef = db
     	.collection('starter_decks')
     	.doc( $(this).data('hello') )
-    docRef.get().then( function(doc) {
-    	if (doc.exists) {
-    		console.log("Document exists. Data is: ", doc.data());
-    		console.log("Document exists. Notes subcollection: ", doc.collection("notes"));
-    	} else {
-    		console.log("No such document!");
-    	}
-    }).catch(function(error) {
-    	console.log("Error getting document: ", error);
+    	.collection('notes')
+    var query = notesCollectionRef
+    	.get()
+    	.then
+    	( 
+    		function(querySnapshot) 
+    		{
+	    		querySnapshot.forEach
+	    		(
+	    			function(doc) 
+	    			{
+	    				console.log("Document exists. Data is: ", doc.data());
+	    			}
+	    		)
+    		}
+    	)
+    	.catch(function(error) {
+    	console.log("Error getting notesCollectionRef: ", error);
     });
 });
 
