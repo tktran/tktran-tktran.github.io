@@ -182,7 +182,8 @@ $("button.deckButton").on('click', function(event){
     	.doc( $(this).data('hello') )
     docRef.get().then( function(doc) {
     	if (doc.exists) {
-    		console.log("Document data: ", doc.data());
+    		console.log("Document exists. Data is: ", doc.data());
+    		console.log("Document exists. Notes subcollection: ", doc.get("notes"));
     	} else {
     		console.log("No such document!");
     	}
