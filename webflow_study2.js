@@ -17,6 +17,10 @@ $("#cardTypeSelectButton").click
 	function()
 	{
 		console.log("cardTypeSelectButton click.");
+		console.log( $('#Clozes (Recommended)').is(':checked') );
+		console.log( $('#Vocabulary (standalone)').is(':checked') );
+		console.log( $('Grammar (standalone)').is(':checked') );
+		console.log( $('Full sentences (standalone)').is(':checked') );
 	}
 )
 
