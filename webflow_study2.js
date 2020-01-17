@@ -21,6 +21,30 @@ $("#cardTypeSelectButton").click
 		console.log( $('#vocabulary_checkbox').is(':checked') );
 		console.log( $('#grammar_checkbox').is(':checked') );
 		console.log( $('#fullsentence_checkbox').is(':checked') );
+
+		var check1 = check2 = check3 = check4 = 'IGNORE';
+		if $('#cloze_checkbox').is(':checked') {
+			check1 = 'cloze';
+		}
+
+		if $('#vocabulary_checkbox').is(':checked') {
+			check2 = 'cloze';
+		}
+
+		if $('#grammar_checkbox').is(':checked') {
+			check3 = 'cloze';
+		}
+
+		if $('#fullsentence_checkbox').is(':checked') {
+			check4 = 'cloze';
+		}
+
+		var query = db
+			.collection('users')
+			.doc(user.id)
+			.collection('progress')
+			.where('content_type', 'in', [check1, check2, check3, check4]);
+
 	}
 )
 
