@@ -20,7 +20,7 @@ $("#cardTypeSelectButton").click
 
 		if (user) {
 			console.log("cardTypeSelectButton click.");
-			console.log("User ID is ", user.id);
+			console.log("User ID is ", user.uid);
 			console.log( $('#cloze_checkbox').is(':checked') );
 			console.log( $('#vocabulary_checkbox').is(':checked') );
 			console.log( $('#grammar_checkbox').is(':checked') );
@@ -53,6 +53,7 @@ $("#cardTypeSelectButton").click
 				.where('content_type', 'in', [check1, check2, check3, check4])
 				.orderBy('spacingDue')
 				.limit(100);
+			console.log(query);
 		}
 		else {
 			console.log('User not logged in');
