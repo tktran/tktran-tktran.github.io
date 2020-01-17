@@ -16,6 +16,8 @@ $("#cardTypeSelectButton").click
 (
 	function()
 	{
+		var user = firebase.auth().currentUser;
+
 		console.log("cardTypeSelectButton click.");
 		console.log( $('#cloze_checkbox').is(':checked') );
 		console.log( $('#vocabulary_checkbox').is(':checked') );
@@ -24,6 +26,7 @@ $("#cardTypeSelectButton").click
 
 		var check1 = check2 = check3 = check4 = 'IGNORE';
 
+		// You need the parentheses in an if statement!		
 		if ($('#cloze_checkbox').is(':checked')) {
 			check1 = 'cloze';
 		}
