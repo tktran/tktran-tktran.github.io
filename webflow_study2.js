@@ -49,7 +49,7 @@ $("#cardTypeSelectButton").click
 				.collection('users')
 				.doc(user.id)
 				.collection('progress')
-				.where('content_type', 'in', [check1, check2, check3, check4]);
+				.where('content_type', 'in', [check1, check2, check3, check4])
 				.orderBy('spacingDue')
 				.limit(100);
 		}
