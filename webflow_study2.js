@@ -23,20 +23,21 @@ $("#cardTypeSelectButton").click
 		console.log( $('#fullsentence_checkbox').is(':checked') );
 
 		var check1 = check2 = check3 = check4 = 'IGNORE';
-		if $('#cloze_checkbox').is(':checked') {
+
+		if ($('#cloze_checkbox').is(':checked')) {
 			check1 = 'cloze';
 		}
 
-		if $('#vocabulary_checkbox').is(':checked') {
-			check2 = 'cloze';
+		if ($('#vocabulary_checkbox').is(':checked')) {
+			check2 = 'vocabulary';
 		}
 
-		if $('#grammar_checkbox').is(':checked') {
-			check3 = 'cloze';
+		if ($('#grammar_checkbox').is(':checked')) {
+			check3 = 'grammar';
 		}
 
-		if $('#fullsentence_checkbox').is(':checked') {
-			check4 = 'cloze';
+		if ($('#fullsentence_checkbox').is(':checked')) {
+			check4 = 'fullsentence';
 		}
 
 		var query = db
