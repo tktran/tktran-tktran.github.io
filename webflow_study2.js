@@ -45,9 +45,10 @@ $("#cardTypeSelectButton").click
 				check4 = 'fullsentence';
 			}
 
+			// It's user.uid, not user.id!
 			var query = db
 				.collection('users')
-				.doc(user.id)
+				.doc(user.uid) 
 				.collection('progress')
 				.where('content_type', 'in', [check1, check2, check3, check4])
 				.orderBy('spacingDue')
