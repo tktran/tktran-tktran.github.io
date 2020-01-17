@@ -20,6 +20,7 @@ $("#cardTypeSelectButton").click
 
 		if (user) {
 			console.log("cardTypeSelectButton click.");
+			console.log("User ID is ", user.id);
 			console.log( $('#cloze_checkbox').is(':checked') );
 			console.log( $('#vocabulary_checkbox').is(':checked') );
 			console.log( $('#grammar_checkbox').is(':checked') );
