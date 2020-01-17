@@ -18,37 +18,43 @@ $("#cardTypeSelectButton").click
 	{
 		var user = firebase.auth().currentUser;
 
-		console.log("cardTypeSelectButton click.");
-		console.log( $('#cloze_checkbox').is(':checked') );
-		console.log( $('#vocabulary_checkbox').is(':checked') );
-		console.log( $('#grammar_checkbox').is(':checked') );
-		console.log( $('#fullsentence_checkbox').is(':checked') );
+		if (user) {
+			console.log("cardTypeSelectButton click.");
+			console.log( $('#cloze_checkbox').is(':checked') );
+			console.log( $('#vocabulary_checkbox').is(':checked') );
+			console.log( $('#grammar_checkbox').is(':checked') );
+			console.log( $('#fullsentence_checkbox').is(':checked') );
 
-		var check1 = check2 = check3 = check4 = 'IGNORE';
+			var check1 = check2 = check3 = check4 = 'IGNORE';
 
-		// You need the parentheses in an if statement!		
-		if ($('#cloze_checkbox').is(':checked')) {
-			check1 = 'cloze';
+			// You need the parentheses in an if statement!		
+			if ($('#cloze_checkbox').is(':checked')) {
+				check1 = 'cloze';
+			}
+
+			if ($('#vocabulary_checkbox').is(':checked')) {
+				check2 = 'vocabulary';
+			}
+
+			if ($('#grammar_checkbox').is(':checked')) {
+				check3 = 'grammar';
+			}
+
+			if ($('#fullsentence_checkbox').is(':checked')) {
+				check4 = 'fullsentence';
+			}
+
+			var query = db
+				.collection('users')
+				.doc(user.id)
+				.collection('progress')
+				.where('content_type', 'in', [check1, check2, check3, check4]);
+				.orderBy('spacingDue')
+				.limit(100);
 		}
-
-		if ($('#vocabulary_checkbox').is(':checked')) {
-			check2 = 'vocabulary';
+		else {
+			console.log('User not logged in');
 		}
-
-		if ($('#grammar_checkbox').is(':checked')) {
-			check3 = 'grammar';
-		}
-
-		if ($('#fullsentence_checkbox').is(':checked')) {
-			check4 = 'fullsentence';
-		}
-
-		var query = db
-			.collection('users')
-			.doc(user.id)
-			.collection('progress')
-			.where('content_type', 'in', [check1, check2, check3, check4]);
-
 	}
 )
 
