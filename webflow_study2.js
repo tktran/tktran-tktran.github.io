@@ -53,7 +53,24 @@ $("#cardTypeSelectButton").click
 				.where('content_type', 'in', [check1, check2, check3, check4])
 				.orderBy('spacingDue')
 				.limit(100);
-			console.log(query);
+			// console.log(query);
+
+			onSnapshotEach = function(doc)
+			{
+				console.log('card snapshot listener was triggered w/', doc.id, ' -> ', doc.data());
+			}
+			onSnapshot = function(snapshot)
+			{
+				if (!snapshot.size) {
+					console.log("Snapshot empty.");
+					return;
+				}
+				snapshot.forEach(onSnapshotEach);
+			}
+			query.onSnapshot(onSnapshot);
+
+			// NEXT STEP - ADD MORE LEARNING CONTENT, CATEGORIZED AS SHOWN ABOVE, AND TEST IT ALL OUT!
+
 		}
 		else {
 			console.log('User not logged in');
