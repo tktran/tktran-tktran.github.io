@@ -61,7 +61,7 @@ $("#cardTypeSelectButton").click
 				console.log('card snapshot listener was triggered w/', doc.id, ' -> ', doc.data());
 
 
-				if (doc.get('content_type') == 'Vocabulary')
+				if (doc.get('content_type') == 'vocabulary')
 				{
 					console.log('Doc type is vocabulary')
 					$("#clozedContent").show();
