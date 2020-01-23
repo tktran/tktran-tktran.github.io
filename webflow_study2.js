@@ -46,6 +46,7 @@ $("#cardTypeSelectButton").click
 			}
 
 			// It's user.uid, not user.id!
+			// should be spacingDue descending or ascending?
 			var query = db
 				.collection('users')
 				.doc(user.uid) 
@@ -58,6 +59,39 @@ $("#cardTypeSelectButton").click
 			onSnapshotEach = function(doc)
 			{
 				console.log('card snapshot listener was triggered w/', doc.id, ' -> ', doc.data());
+
+
+				if (doc.get('content_type') == 'Vocabulary')
+				{
+					console.log('Doc type is vocabulary')
+					$("#clozedContent").show();
+					$("#originalContent").hide();
+					$("#preNote").show();
+					$("#postNote").hide();
+					$("#showAnswerDiv").show();
+					$("#setIntervalGrid").hide();
+
+					$("#clozedContent").html(doc.get('contentOriginal'));
+					$("#preNote").html(doc.get('notePre'));
+					$("#postNote").html(doc.get('notePost'));
+					// $("#originalContent").html(doc.get('contentOriginal'));
+				}
+				else if (doc.get('content_type') == 'cloze')
+				{
+					console.log('Doc type is cloze')
+					$("#clozedContent").show();
+					$("#originalContent").hide();
+					$("#preNote").show();
+					$("#postNote").hide();
+					$("#showAnswerDiv").show();
+					$("#setIntervalGrid").hide();
+
+					$("#clozedContent").html(doc.get('contentClozed'));
+					$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
+					$("#preNote").html(doc.get('notePre'));
+					$("#postNote").html(doc.get('notePost'));
+					// $("#originalContent").html(doc.get('contentOriginal'));
+				}
 			}
 			onSnapshot = function(snapshot)
 			{
