@@ -64,32 +64,25 @@ $("#cardTypeSelectButton").click
 				if (doc.get('content_type') == 'vocabulary')
 				{
 					console.log('Doc type is vocabulary')
-					$("#clozedContent").show();
-					$("#originalContent").hide();
-					$("#preNote").show();
-					$("#postNote").hide();
-					$("#showAnswerDiv").show();
-					$("#setIntervalGrid").hide();
+					$("#frontSide1").show();
+					$("#frontSide2").show();
+					$("#frontSide3").hide();
+					$("#backSide1").hide();
 
-					$("#clozedContent").html(doc.get('contentOriginal'));
-					$("#preNote").html(doc.get('notePre'));
-					$("#postNote").html(doc.get('notePost'));
-					// $("#originalContent").html(doc.get('contentOriginal'));
+					$("#frontSide1").html(doc.get('contentOriginal'));
+					$("#frontSide2").html(doc.get('notePre'));
 				}
 				else if (doc.get('content_type') == 'cloze')
 				{
 					console.log('Doc type is cloze')
-					$("#clozedContent").show();
-					$("#originalContent").hide();
-					$("#preNote").show();
-					$("#postNote").hide();
-					$("#showAnswerDiv").show();
-					$("#setIntervalGrid").hide();
+					$("#frontSide1").show();
+					$("#frontSide2").show();
+					$("#frontSide3").show();
+					$("#backSide1").hide();
 
-					$("#clozedContent").html(doc.get('contentClozed'));
-					$("#nativeTranslation").html(doc.get('contentNativeTranslation'));
-					$("#preNote").html(doc.get('notePre'));
-					$("#postNote").html(doc.get('notePost'));
+					$("#frontSide1").html(doc.get('contentClozed'));
+					$("#frontSide2").html(doc.get('contentNativeTranslation'));
+					$("#frontSide3").html(doc.get('notePre'));
 					// $("#originalContent").html(doc.get('contentOriginal'));
 				}
 			}
