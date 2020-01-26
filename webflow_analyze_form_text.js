@@ -12,38 +12,22 @@ const settings = {};
 var db = firebase.firestore();
 db.settings(settings);
 
-$("#cardTypeSelectButton").click
+$("#submitTextButton").click
 (
 	function()
 	{
 		var user = firebase.auth().currentUser;
 
 		if (user) {
-			console.log("cardTypeSelectButton click.");
+			console.log("submitTextButton click.");
 			console.log("User ID is ", user.uid);
-			console.log( $('#cloze_checkbox').is(':checked') );
-			console.log( $('#vocabulary_checkbox').is(':checked') );
-			console.log( $('#grammar_checkbox').is(':checked') );
-			console.log( $('#fullsentence_checkbox').is(':checked') );
 
-			var check1 = check2 = check3 = check4 = 'IGNORE';
-
-			// You need the parentheses in an if statement!		
-			if ($('#cloze_checkbox').is(':checked')) {
-				check1 = 'cloze';
-			}
-
-			if ($('#vocabulary_checkbox').is(':checked')) {
-				check2 = 'vocabulary';
-			}
-
-			if ($('#grammar_checkbox').is(':checked')) {
-				check3 = 'grammar';
-			}
-
-			if ($('#fullsentence_checkbox').is(':checked')) {
-				check4 = 'fullsentence';
-			}
+			text_doc = db.collection('pending_text_docs').document()
+			text_doc.set(
+				{
+					'text': $('#inputTextField').val()
+				}
+			)
 
 			// It's user.uid, not user.id!
 			// should be spacingDue descending or ascending?
@@ -55,46 +39,6 @@ $("#cardTypeSelectButton").click
 				.orderBy('spacingDue')
 				.limit(100);
 			// console.log(query);
-
-			onSnapshotEach = function(doc)
-			{
-				console.log('card snapshot listener was triggered w/', doc.id, ' -> ', doc.data());
-
-
-				if (doc.get('content_type') == 'vocabulary')
-				{
-					console.log('Doc type is vocabulary')
-					$("#frontSide1").show();
-					$("#frontSide2").show();
-					$("#frontSide3").hide();
-					$("#backSide1").hide();
-
-					$("#frontSide1").html(doc.get('contentOriginal'));
-					$("#frontSide2").html(doc.get('notePre'));	
-				}
-				else if (doc.get('content_type') == 'cloze')
-				{
-					console.log('Doc type is cloze')
-					$("#frontSide1").show();
-					$("#frontSide2").show();
-					$("#frontSide3").show();
-					$("#backSide1").hide();
-
-					$("#frontSide1").html(doc.get('contentClozed'));
-					$("#frontSide2").html(doc.get('contentNativeTranslation'));
-					$("#frontSide3").html(doc.get('notePre'));
-					// $("#originalContent").html(doc.get('contentOriginal'));
-				}
-			}
-			onSnapshot = function(snapshot)
-			{
-				if (!snapshot.size) {
-					console.log("Snapshot empty.");
-					return;
-				}
-				snapshot.forEach(onSnapshotEach);
-			}
-			query.onSnapshot(onSnapshot);
 
 			// NEXT STEP - ADD MORE LEARNING CONTENT, CATEGORIZED AS SHOWN ABOVE, AND TEST IT ALL OUT!
 
