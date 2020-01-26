@@ -22,7 +22,7 @@ $("#submitTextButton").click
 			console.log("submitTextButton click.");
 			console.log("User ID is ", user.uid);
 
-			text_doc = db.collection('pending_text_docs').document()
+			text_doc = db.collection('pending_text_docs').doc()
 			text_doc.set(
 				{
 					'text': $('#inputTextField').val()
