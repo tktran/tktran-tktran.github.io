@@ -29,15 +29,15 @@ $("#submitTextButton").click
 				}
 			)
 
-			// It's user.uid, not user.id!
-			// should be spacingDue descending or ascending?
-			var query = db
-				.collection('users')
-				.doc(user.uid) 
-				.collection('progress')
-				.where('content_type', 'in', [check1, check2, check3, check4])
-				.orderBy('spacingDue')
-				.limit(100);
+			// // It's user.uid, not user.id!
+			// // should be spacingDue descending or ascending?
+			// var query = db
+			// 	.collection('users')
+			// 	.doc(user.uid) 
+			// 	.collection('progress')
+			// 	.where('content_type', 'in', [check1, check2, check3, check4])
+			// 	.orderBy('spacingDue')
+			// 	.limit(100);
 			// console.log(query);
 
 			// NEXT STEP - ADD MORE LEARNING CONTENT, CATEGORIZED AS SHOWN ABOVE, AND TEST IT ALL OUT!
