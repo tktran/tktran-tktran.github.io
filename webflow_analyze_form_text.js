@@ -25,7 +25,8 @@ $("#submitTextButton").click
 			text_doc = db.collection('pending_text_docs').doc()
 			text_doc.set(
 				{
-					'text': $('#inputTextField').val()
+					'text': $('#inputTextField').val(),
+					'user': user.uid
 				}
 			)
 
