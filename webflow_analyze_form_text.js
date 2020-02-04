@@ -18,12 +18,12 @@ submitTextButton_success = function(data)
 {
 	// In the success call is also the AJAX call
 	$("#resultDiv").html("User ID is " + user.uid);
-}
+};
 
 submitTextButton_failure = function(data)
 {
 	$("#resultDiv").html("Failure. User ID is " + user.uid);
-}
+};
 
 
 submitTextButton_click = function()
@@ -40,9 +40,10 @@ submitTextButton_click = function()
 			success: submitTextButton_success,
 			error: submitTextButton_failure
 		});
-}
+};
 
-// $("#submitTextButton").click
+$("#submitTextButton").click(submitTextButton_click);
+
 // (
 // 	function()
 // 	{
