@@ -19,7 +19,7 @@ $("#submitTextButton").click
 		var user = firebase.auth().currentUser;
 
 		if (user) {
-			$("#resultDiv").html("User ID is ", user.uid);
+			$("#resultDiv").html("User ID is " + user.uid);
 		}
 		else {
 			$("#resultDiv").html("User not logged in. ");
