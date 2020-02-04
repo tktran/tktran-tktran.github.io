@@ -12,19 +12,49 @@ const settings = {};
 var db = firebase.firestore();
 db.settings(settings);
 
-$("#submitTextButton").click
-(
-	function()
-	{
-		var user = firebase.auth().currentUser;
+// https://www.sitepoint.com/use-jquerys-ajax-function/
+// https://stackoverflow.com/questions/4159701/jquery-posting-valid-json-in-request-body
+submitTextButton_success = function(data)
+{
+	// In the success call is also the AJAX call
+	$("#resultDiv").html("User ID is " + user.uid);
+}
 
-		if (user) {
-			$("#resultDiv").html("User ID is " + user.uid);
-		}
-		else {
-			$("#resultDiv").html("User not logged in. ");
-		}
-	}
+submitTextButton_failure = function(data)
+{
+	$("#resultDiv").html("Failure. User ID is " + user.uid);
+}
+
+
+submitTextButton_click = function()
+{
+	gcf_url = "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http";
+	json_data = JSON.stringify({'name': 'World'});
+	$.ajax(
+		{
+			contentType: "application/json",
+			data: json_data,
+			dataType: 'json',
+			type: 'POST',
+			url: gcf_url,
+			success: submitTextButton_success,
+			error: submitTextButton_failure
+		});
+}
+
+// $("#submitTextButton").click
+// (
+// 	function()
+// 	{
+// 		var user = firebase.auth().currentUser;
+
+// 		if (user) {
+// 			$("#resultDiv").html("User ID is " + user.uid);
+// 		}
+// 		else {
+// 			$("#resultDiv").html("User not logged in. ");
+// 		}
+// 	}
 )
 
 // $("#submitTextButton").click
