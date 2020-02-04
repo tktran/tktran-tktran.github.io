@@ -55,7 +55,7 @@ submitTextButton_click = function()
 // 			$("#resultDiv").html("User not logged in. ");
 // 		}
 // 	}
-)
+// )
 
 // $("#submitTextButton").click
 // (
