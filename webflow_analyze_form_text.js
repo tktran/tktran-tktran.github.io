@@ -19,36 +19,51 @@ $("#submitTextButton").click
 		var user = firebase.auth().currentUser;
 
 		if (user) {
-			console.log("submitTextButton click.");
-			console.log("User ID is ", user.uid);
-
-			text_doc = db.collection('pending_text_docs').doc()
-			text_doc.set(
-				{
-					'text': $('#inputTextField').val(),
-					'user': user.uid
-				}
-			)
-
-			// // It's user.uid, not user.id!
-			// // should be spacingDue descending or ascending?
-			// var query = db
-			// 	.collection('users')
-			// 	.doc(user.uid) 
-			// 	.collection('progress')
-			// 	.where('content_type', 'in', [check1, check2, check3, check4])
-			// 	.orderBy('spacingDue')
-			// 	.limit(100);
-			// console.log(query);
-
-			// NEXT STEP - ADD MORE LEARNING CONTENT, CATEGORIZED AS SHOWN ABOVE, AND TEST IT ALL OUT!
-
+			$("#resultDiv").html("User ID is ", user.uid);
 		}
 		else {
-			console.log('User not logged in');
+			$("#resultDiv").html("User not logged in. ");
 		}
 	}
 )
+
+// $("#submitTextButton").click
+// (
+// 	function()
+// 	{
+// 		var user = firebase.auth().currentUser;
+
+// 		if (user) {
+// 			console.log("submitTextButton click.");
+// 			console.log("User ID is ", user.uid);
+
+// 			text_doc = db.collection('pending_text_docs').doc()
+// 			text_doc.set(
+// 				{
+// 					'text': $('#inputTextField').val(),
+// 					'user': user.uid
+// 				}
+// 			)
+
+// 			// // It's user.uid, not user.id!
+// 			// // should be spacingDue descending or ascending?
+// 			// var query = db
+// 			// 	.collection('users')
+// 			// 	.doc(user.uid) 
+// 			// 	.collection('progress')
+// 			// 	.where('content_type', 'in', [check1, check2, check3, check4])
+// 			// 	.orderBy('spacingDue')
+// 			// 	.limit(100);
+// 			// console.log(query);
+
+// 			// NEXT STEP - ADD MORE LEARNING CONTENT, CATEGORIZED AS SHOWN ABOVE, AND TEST IT ALL OUT!
+
+// 		}
+// 		else {
+// 			console.log('User not logged in');
+// 		}
+// 	}
+// )
 
 // attachCardSnapshotListener = function(thisObj)
 // {
