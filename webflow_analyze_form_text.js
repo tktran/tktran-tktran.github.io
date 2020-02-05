@@ -16,13 +16,28 @@ db.settings(settings);
 // https://stackoverflow.com/questions/4159701/jquery-posting-valid-json-in-request-body
 submitTextButton_success = function(data)
 {
-	// In the success call is also the AJAX call
-	$("#resultDiv").html("User ID is " + user.uid);
+	var user = firebase.auth().currentUser;
+	if (user)
+	{
+		$("#resultDiv").html("AJAX call succeeded. User ID is " + user.uid);
+	}
+	else
+	{
+		$("#resultDiv").html("AJAX call succeeded. No user.");
+	}
 };
 
 submitTextButton_failure = function(data)
 {
-	$("#resultDiv").html("Failure. User ID is " + user.uid);
+	var user = firebase.auth().currentUser;
+	if (user)
+	{
+		$("#resultDiv").html("AJAX call failed. User ID is " + user.uid);
+	}
+	else
+	{
+		$("#resultDiv").html("AJAX call failed. No user.");
+	}
 };
 
 
