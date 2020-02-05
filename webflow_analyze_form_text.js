@@ -27,16 +27,16 @@ submitTextButton_success = function(data)
 	}
 };
 
-submitTextButton_failure = function(data)
+submitTextButton_failure = function(jqxhr, status, exception)
 {
 	var user = firebase.auth().currentUser;
 	if (user)
 	{
-		$("#resultDiv").html("AJAX call failed. User ID is " + user.uid);
+		$("#resultDiv").html("AJAX call failed with exception " + exception);
 	}
 	else
 	{
-		$("#resultDiv").html("AJAX call failed. No user.");
+		$("#resultDiv").html("AJAX call failed.");
 	}
 };
 
