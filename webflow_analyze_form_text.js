@@ -20,6 +20,7 @@ submitTextButton_success = function(data)
 	if (user)
 	{
 		$("#resultDiv").html("AJAX call succeeded. User ID is " + user.uid);
+		console.log('test_key ' + data['test_key'])
 	}
 	else
 	{
