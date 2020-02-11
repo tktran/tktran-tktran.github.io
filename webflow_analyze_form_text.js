@@ -46,7 +46,7 @@ submitTextButton_click = function()
 {
 	console.log("submitTextButton_click.")
 	gcf_url = "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http";
-	json_data = JSON.stringify({'name': $('#inputTextField').val()});
+	json_data = JSON.stringify({'text': $('#inputTextField').val()});
 	$.ajax(
 		{
 			contentType: "application/json",
