@@ -19,16 +19,15 @@ submitTextButton_success = function(data)
 	var user = firebase.auth().currentUser;
 	if (user)
 	{
-		$("#resultDiv").html("AJAX call succeeded. User ID is " + user.uid);
-		console.log('0 as integer ' + data[0])
-		console.log('1 as integer ' + data[1])
-		console.log('1 as string ' + data['1'])
-		console.log('data ' + data)
-	}	
-	else
-	{
-		$("#resultDiv").html("AJAX call succeeded. No user.");
+		console.log('User exists.');
 	}
+
+	var json_each = function(index, element)
+	{
+		console.log('At index ' + index + ' is element ' + element.name);
+	}
+	data.forEach(json_each);
+
 };
 
 submitTextButton_failure = function(jqxhr, status, exception)
