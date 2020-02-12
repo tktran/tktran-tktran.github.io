@@ -20,10 +20,11 @@ submitTextButton_success = function(data)
 	if (user)
 	{
 		$("#resultDiv").html("AJAX call succeeded. User ID is " + user.uid);
+		console.log('0 as integer ' + data[0])
 		console.log('1 as integer ' + data[1])
 		console.log('1 as string ' + data['1'])
 		console.log('data ' + data)
-	}
+	}	
 	else
 	{
 		$("#resultDiv").html("AJAX call succeeded. No user.");
@@ -43,12 +44,12 @@ submitTextButton_failure = function(jqxhr, status, exception)
 	}
 };
 
-
 submitTextButton_click = function()
 {
 	console.log("submitTextButton_click.")
 	gcf_url = "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http";
 	json_data = JSON.stringify({'text': $('#inputTextField').val()});
+
 	$.ajax(
 		{
 			contentType: "application/json",
