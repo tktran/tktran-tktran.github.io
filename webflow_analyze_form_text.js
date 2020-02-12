@@ -22,7 +22,16 @@ submitTextButton_success = function(data)
 		console.log('User exists.');
 	}
 
+	// This works!
 	console.log(data["0"]);
+
+	// Testing this.
+	// https://stackoverflow.com/questions/2342371/jquery-loop-on-json-data-using-each
+	$.each(data, function(index, element) {
+		console.log('retrieving data by index', data[index]);
+		console.log('retrieving data as element', element);
+
+	})
 };
 
 submitTextButton_failure = function(jqxhr, status, exception)
