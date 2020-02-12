@@ -22,12 +22,7 @@ submitTextButton_success = function(data)
 		console.log('User exists.');
 	}
 
-	var json_each = function(index, element)
-	{
-		console.log('At index ' + index + ' is element ' + element.name);
-	}
-	data.forEach(json_each);
-
+	console.log(data["0"]);
 };
 
 submitTextButton_failure = function(jqxhr, status, exception)
