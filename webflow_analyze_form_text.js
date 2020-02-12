@@ -20,7 +20,8 @@ submitTextButton_success = function(data)
 	if (user)
 	{
 		$("#resultDiv").html("AJAX call succeeded. User ID is " + user.uid);
-		console.log('i ' + data['i'])
+		console.log('1 as integer ' + data[1])
+		console.log('1 as string ' + data['1'])
 	}
 	else
 	{
