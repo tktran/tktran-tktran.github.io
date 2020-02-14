@@ -251,17 +251,6 @@ $("#submitTextButton").click(submitTextButton_click);
 // 		});
 // }
 
-// $(this).ready( 
-// 	function() {
-// 		firebase.auth().onAuthStateChanged(function(user) {
-// 			if (user) {
-// 				console.log('this ready -> user snapshot attachment succeeded');
-// 				attachCardSnapshotListener($(this));
-// 			}
-// 			else
-// 			{
-// 				console.log('No user is signed in.');
-// 			}
-// 		})
-// 	}
-// )
+$(this).ready(
+	function () {$('#table_id').DataTable();}
+)
