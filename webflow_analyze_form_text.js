@@ -29,7 +29,7 @@ submitTextButton_success = function(data)
 	// https://stackoverflow.com/questions/2342371/jquery-loop-on-json-data-using-each
 	$.each(data, function(index, element) {
 		console.log('data[', index, ']=', data[index]);
-		console.log('element = ', element);
+		// console.log('element = ', element);
 	})
 };
 
