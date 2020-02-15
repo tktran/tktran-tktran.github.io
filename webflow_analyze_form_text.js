@@ -53,10 +53,10 @@ data_tables_init = function()
 	datatables_config = {
 		ajax: {
 			url: "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http",
-			dataSrc: '',
 			type: 'POST',
 			data: json_data,
 			contentType: "application/json",
+			dataSrc: '',
 		},
 		columns: [
 			{data: "i"},
@@ -75,11 +75,11 @@ submitTextButton_click = function()
 
 	$.ajax(
 		{
-			contentType: "application/json",
+			url: gcf_url,
+			type: 'POST',
 			data: json_data,
 			dataType: 'json',
-			type: 'POST',
-			url: gcf_url,
+			contentType: "application/json",
 			success: submitTextButton_success,
 			error: submitTextButton_failure
 		});
