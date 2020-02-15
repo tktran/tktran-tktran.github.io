@@ -251,6 +251,13 @@ $("#submitTextButton").click(submitTextButton_click);
 // 		});
 // }
 
-$(this).ready(
-	function () {$('#table_id').DataTable();}
-)
+var data_tables_init = function ()
+{
+	gcf_ajax_url = "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http";
+	datatables_config = {
+		ajax: gcf_ajax_url
+	};
+	$('#table_id').DataTable(datatables_config);
+}
+
+$(this).ready(data_tables_init);
