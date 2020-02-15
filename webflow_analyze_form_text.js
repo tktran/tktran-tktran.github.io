@@ -49,14 +49,12 @@ submitTextButton_failure = function(jqxhr, status, exception)
 data_tables_init = function()
 {
 	// https://datatables.net/examples/server_side/post.html
-	json_data = JSON.stringify({'text': $('#inputTextField').val()});
 	console.log('json_data in data_tables_init: ', json_data)
 	datatables_config = {
-		"serverSide": true,
 		"ajax": {
 			"url": "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http",
 			"type": 'POST',
-			"data": json_data,
+			"data": $('#inputTextField').val(),
 			"contentType": "application/json",
 			"dataSrc": '',
 		},
