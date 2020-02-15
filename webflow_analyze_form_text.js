@@ -54,8 +54,11 @@ data_tables_init = function()
 	datatables_config = {
 		"ajax": {
 			"url": "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http",
-			"type": 'POST',
-			"data": function(d) {d.text = $('#inputTextField').val()},
+			"type": "POST",
+			"data": function(d) {
+				d.text = $('#inputTextField').val();
+				return JSON.stringify( d );
+			},
 			"contentType": "application/json",
 			"dataSrc": '',
 		},
