@@ -46,6 +46,15 @@ submitTextButton_failure = function(jqxhr, status, exception)
 	}
 };
 
+data_tables_init = function()
+{
+	datatables_config = {
+		ajax: "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http"
+	};
+
+	$('#table_id').DataTable(datatables_config);
+}
+
 submitTextButton_click = function()
 {
 	console.log("submitTextButton_click.")
@@ -62,6 +71,8 @@ submitTextButton_click = function()
 			success: submitTextButton_success,
 			error: submitTextButton_failure
 		});
+
+	data_tables_init();
 };
 
 $("#submitTextButton").click(submitTextButton_click);
@@ -251,13 +262,4 @@ $("#submitTextButton").click(submitTextButton_click);
 // 		});
 // }
 
-var data_tables_init = function ()
-{
-	gcf_ajax_url = "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http";
-	datatables_config = {
-		ajax: gcf_ajax_url
-	};
-	$('#table_id').DataTable(datatables_config);
-}
-
-$(this).ready(data_tables_init);
+$(this).ready();
