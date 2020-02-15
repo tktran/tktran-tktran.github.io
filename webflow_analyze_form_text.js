@@ -49,7 +49,14 @@ submitTextButton_failure = function(jqxhr, status, exception)
 data_tables_init = function()
 {
 	datatables_config = {
-		ajax: "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http"
+		ajax: {
+			url: "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http",
+			dataSrc: ''
+		},
+		columns: [
+			{data: "i"},
+			{data: "token"}
+		]
 	};
 
 	$('#table_id').DataTable(datatables_config);
