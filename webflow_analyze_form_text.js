@@ -51,14 +51,14 @@ data_tables_init = function()
 	// https://datatables.net/examples/server_side/post.html
 	json_data = JSON.stringify({'text': $('#inputTextField').val()});
 	datatables_config = {
-		ajax: {
+		"ajax": {
 			"url": "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http",
 			"type": 'POST',
 			"data": json_data,
 			"contentType": "application/json",
 			"dataSrc": '',
 		},
-		columns: [
+		"columns": [
 			{"data": "i"},
 			{"data": "token"}
 		]
