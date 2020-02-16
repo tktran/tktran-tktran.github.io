@@ -69,9 +69,7 @@ data_tables_init = function()
 			"dataSrc": ''
 		},
 		"columns": [
-			{"data": "i"},
-			{"data": "tuple1"},
-			{"data": "ntuple"}
+			{"data": "i"}
 		]
 	};
 
