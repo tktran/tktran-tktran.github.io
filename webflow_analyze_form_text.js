@@ -66,7 +66,7 @@ data_tables_init = function()
 				return JSON.stringify( d );
 			},
 			"contentType": "application/json",
-			"dataSrc": '',
+			"dataSrc": ''
 		},
 		"columns": [
 			{"data": "i"},
