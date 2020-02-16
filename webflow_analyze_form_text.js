@@ -50,6 +50,12 @@ data_tables_init = function()
 {
 	// https://datatables.net/examples/server_side/post.html
 	// https://datatables.net/reference/option/ajax.data
+
+	// {"0": {"tuple1": "\u4f60", "ntuple": "\u4f60"}, 
+	// "1": {"tuple1": "\u597d", "ntuple": "\u597d"}, 
+	// "2": {"tuple1": "\u4e2d", "ntuple": "\u4e2d\u6587"}, 
+	// "3": {"tuple1": "\u6587", "ntuple": "\u6587"}}
+
 	console.log('json_data in data_tables_init: ', json_data)
 	datatables_config = {
 		"ajax": {
@@ -60,11 +66,12 @@ data_tables_init = function()
 				return JSON.stringify( d );
 			},
 			"contentType": "application/json",
-			"dataSrc": '',
+			"dataSrc": ''
 		},
 		"columns": [
 			{"data": "i"},
-			{"data": "token"}
+			{"data": "tuple1"},
+			{"data": "ntuple"}
 		]
 	};
 
