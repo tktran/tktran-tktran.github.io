@@ -56,7 +56,7 @@ data_tables_init = function()
 	// "2": {"tuple1": "\u4e2d", "ntuple": "\u4e2d\u6587"}, 
 	// "3": {"tuple1": "\u6587", "ntuple": "\u6587"}}
 
-	console.log('json_data in data_tables_init: ', json_data)
+	console.log('json_data in data_tables_init: ', json_data);
 	datatables_config = {
 		"ajax": {
 			"url": "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http",
