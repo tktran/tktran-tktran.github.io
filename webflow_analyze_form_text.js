@@ -65,6 +65,7 @@ data_tables_init = function()
 			{"data": "i"},
 			{"data": "tuple1"},
 			{"data": "word"},
+			{"data": "pinyin_accent"},
 			{"data": "defn"},
 		]
 	};
