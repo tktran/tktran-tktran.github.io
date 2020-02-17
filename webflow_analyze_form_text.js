@@ -64,7 +64,8 @@ data_tables_init = function()
 		"columns": [
 			{"data": "i"},
 			{"data": "tuple1"},
-			{"data": "ntuple"}
+			{"data": "word"},
+			{"data": "defn"},
 		]
 	};
 
