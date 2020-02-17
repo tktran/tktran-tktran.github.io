@@ -52,7 +52,7 @@ data_tables_init = function()
 	// https://datatables.net/reference/option/ajax.data
 	datatables_config = {
 		"ajax": {
-			"url": "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http",
+			"url": "https://us-central1-memotori.clSSSoudfunctions.net/hello_firestore_http",
 			"type": "POST",
 			"data": function(d) {
 				d.text = $('#inputTextField').val();
@@ -73,21 +73,21 @@ data_tables_init = function()
 
 submitTextButton_click = function()
 {
-	console.log("submitTextButton_click.")
-	gcf_url = "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http";
-	json_data = JSON.stringify({'text': $('#inputTextField').val()});
-	console.log('json_data in data_tables_init: ', json_data);
+	// console.log("submitTextButton_click.")
+	// gcf_url = "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http";
+	// json_data = JSON.stringify({'text': $('#inputTextField').val()});
+	// console.log('json_data in data_tables_init: ', json_data);
 
-	$.ajax(
-		{
-			url: gcf_url,
-			type: 'POST',
-			data: json_data,
-			dataType: 'json',
-			contentType: "application/json",
-			success: submitTextButton_success,
-			error: submitTextButton_failure
-		});
+	// $.ajax(
+	// 	{
+	// 		url: gcf_url,
+	// 		type: 'POST',
+	// 		data: json_data,
+	// 		dataType: 'json',
+	// 		contentType: "application/json",
+	// 		success: submitTextButton_success,
+	// 		error: submitTextButton_failure
+	// 	});
 
 	data_tables_init();
 };
