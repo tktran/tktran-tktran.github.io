@@ -23,7 +23,7 @@ submitTextButton_success = function(data)
 	}
 
 	// This works!
-	console.log(data["0"]);
+	console.log(data);
 
 	// Testing this.
 	// https://stackoverflow.com/questions/2342371/jquery-loop-on-json-data-using-each
@@ -76,17 +76,18 @@ submitTextButton_click = function()
 	console.log("submitTextButton_click.")
 	gcf_url = "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http";
 	json_data = JSON.stringify({'text': $('#inputTextField').val()});
+	console.log('json_data in data_tables_init: ', json_data);
 
-	// $.ajax(
-	// 	{
-	// 		url: gcf_url,
-	// 		type: 'POST',
-	// 		data: json_data,
-	// 		dataType: 'json',
-	// 		contentType: "application/json",
-	// 		success: submitTextButton_success,
-	// 		error: submitTextButton_failure
-	// 	});
+	$.ajax(
+		{
+			url: gcf_url,
+			type: 'POST',
+			data: json_data,
+			dataType: 'json',
+			contentType: "application/json",
+			success: submitTextButton_success,
+			error: submitTextButton_failure
+		});
 
 	data_tables_init();
 };
