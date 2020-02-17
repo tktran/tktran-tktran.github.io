@@ -52,7 +52,7 @@ data_tables_init = function()
 	// https://datatables.net/reference/option/ajax.data
 	datatables_config = {
 		"ajax": {
-			"url": "https://us-central1-memotori.clSSSoudfunctions.net/hello_firestore_http",
+			"url": "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http",
 			"type": "POST",
 			"data": function(d) {
 				d.text = $('#inputTextField').val();
