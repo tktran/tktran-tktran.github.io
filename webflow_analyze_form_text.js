@@ -70,7 +70,17 @@ data_tables_init = function()
 		]
 	};
 
-	$('#table_id').DataTable(datatables_config);
+	// https://datatables.net/reference/api/ajax.reload()
+	if ( $.fn.dataTable.isDataTable( '#table_id' ) ) {
+    table = $('#table_id').DataTable();
+    table.ajax.reload(); // should work right away,
+    // since the data parameter in json config is
+    // already a function that retrieves from the
+    // input field
+	}
+	else {
+  	$('#table_id').DataTable(datatables_config);
+	}
 }
 
 submitTextButton_click = function()
