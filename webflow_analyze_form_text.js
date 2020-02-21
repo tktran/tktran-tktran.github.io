@@ -51,6 +51,7 @@ data_tables_init = function()
 	// https://datatables.net/examples/server_side/post.html
 	// https://datatables.net/reference/option/ajax.data
 	datatables_config = {
+
 		"ajax": {
 			"url": "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http",
 			"type": "POST",
@@ -61,13 +62,27 @@ data_tables_init = function()
 			"contentType": "application/json",
 			"dataSrc": 'data'
 		},
+
 		"columns": [
 			{"data": "i"},
 			{"data": "tuple1"},
 			{"data": "word"},
 			{"data": "pinyin"},
 			{"data": "defn"},
-		]
+		],
+
+		"columnDefs": [ 
+			{
+		    "orderable": true,
+		    "className": "select-checkbox",
+		    "targets": 0
+			} 
+		],
+
+		"select": {
+			"style": "os",
+			"selector": "td:first-child"
+		}
 	};
 
 	// https://datatables.net/reference/api/ajax.reload()
