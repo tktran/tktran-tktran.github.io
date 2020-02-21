@@ -64,6 +64,7 @@ data_tables_init = function()
 		},
 
 		"columns": [
+			{"data": null},
 			{"data": "i"},
 			{"data": "tuple1"},
 			{"data": "word"},
@@ -73,7 +74,6 @@ data_tables_init = function()
 
 		"columnDefs": [ 
 			{
-				"data": null,
 				"defaultContent": "",
 		    "orderable": true,
 		    "className": "select-checkbox",
