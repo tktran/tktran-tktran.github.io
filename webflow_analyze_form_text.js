@@ -73,6 +73,8 @@ data_tables_init = function()
 
 		"columnDefs": [ 
 			{
+				"data": null,
+				"defaultContent": "",
 		    "orderable": true,
 		    "className": "select-checkbox",
 		    "targets": 0
