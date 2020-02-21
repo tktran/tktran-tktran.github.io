@@ -59,7 +59,7 @@ data_tables_init = function()
 				return JSON.stringify(d);
 			},
 			"contentType": "application/json",
-			"dataSrc": ''
+			"dataSrc": 'data'
 		},
 		"columns": [
 			{"data": "i"},
@@ -76,7 +76,7 @@ data_tables_init = function()
     table.ajax.reload(); // should work right away,
     // since the data parameter in json config is
     // already a function that retrieves from the
-    // input field
+    // input field. AND IT DOES! WOO!
 	}
 	else {
   	$('#table_id').DataTable(datatables_config);
