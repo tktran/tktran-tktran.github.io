@@ -75,14 +75,14 @@ data_tables_init = function()
 		"columnDefs": [ 
 			{
 				"defaultContent": "",
-		    "orderable": true,
+		    "orderable": false,
 		    "className": "select-checkbox",
 		    "targets": 0
 			} 
 		],
 
 		"select": {
-			"style": "os",
+			"style": "multi",
 			"selector": "td:first-child"
 		}
 	};
