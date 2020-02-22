@@ -58,7 +58,7 @@ data_tables_init = function()
 				text: 'test text',
 				action: function ( e, dt, button, config ) 
 								{
-                	alert( dt.rows( { selected: true } ).indexes().length +' row(s) selected' );
+                	console.log( dt.rows( { selected: true } ).indexes().length +' row(s) selected' );
             		}
       },
 			'selected',
