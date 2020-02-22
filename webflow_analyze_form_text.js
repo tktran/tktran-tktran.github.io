@@ -56,9 +56,9 @@ data_tables_init = function()
 			{
 				extend: 'selected',
 				text: 'test text',
-				action: function ( e, dt, button, config ) 
+				action: function (e, dt, button, config) 
 								{
-                	console.log( dt.rows( { selected: true } ).indexes().length +' row(s) selected' );
+                	console.log('test.');
             		}
       },
 			'selected',
