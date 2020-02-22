@@ -54,12 +54,8 @@ data_tables_init = function()
 		dom: "Bfrtip",
 		buttons: [
 			'selected',
-			'selectedSingle',
 			'selectAll',
 			'selectNone',
-			'selectRows',
-			'selectColumns',
-			'selectCells'
 		],
 
 		ajax: {
