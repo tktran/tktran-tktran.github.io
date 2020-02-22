@@ -53,6 +53,14 @@ data_tables_init = function()
 	datatables_config = {
 		dom: "Bfrtip",
 		buttons: [
+			{
+				extend: 'selected',
+				text: 'test text',
+				action: function ( e, dt, button, config ) 
+								{
+                	alert( dt.rows( { selected: true } ).indexes().length +' row(s) selected' );
+            		}
+      },
 			'selected',
 			'selectAll',
 			'selectNone',
