@@ -51,39 +51,49 @@ data_tables_init = function()
 	// https://datatables.net/examples/server_side/post.html
 	// https://datatables.net/reference/option/ajax.data
 	datatables_config = {
+		dom: "Bfrtip",
+		buttons: [
+			'selected',
+			'selectedSingle',
+			'selectAll',
+			'selectNone',
+			'selectRows',
+			'selectColumns',
+			'selectCells'
+		],
 
-		"ajax": {
-			"url": "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http",
-			"type": "POST",
-			"data": function(d) {
+		ajax: {
+			url: "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http",
+			type: "POST",
+			data: function(d) {
 				d.text = $('#inputTextField').val();
 				return JSON.stringify(d);
 			},
-			"contentType": "application/json",
-			"dataSrc": 'data'
+			contentType: "application/json",
+			dataSrc: 'data'
 		},
 
-		"columns": [
-			{"data": null},
-			{"data": "i"},
-			{"data": "tuple1"},
-			{"data": "word"},
-			{"data": "pinyin"},
-			{"data": "defn"},
+		columns: [
+			{data: null},
+			{data: "i"},
+			{data: "tuple1"},
+			{data: "word"},
+			{data: "pinyin"},
+			{data: "defn"},
 		],
 
-		"columnDefs": [ 
+		columnDefs: [ 
 			{
-				"defaultContent": "",
-		    "orderable": false,
-		    "className": "select-checkbox",
-		    "targets": 0
+				defaultContent: "",
+		    orderable: false,
+		    className: "select-checkbox",
+		    targets: 0
 			} 
 		],
 
-		"select": {
-			"style": "multi",
-			"selector": "td:first-child"
+		select: {
+			style: "multi",
+			selector: "td:first-child"
 		}
 	};
 
