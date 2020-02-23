@@ -99,7 +99,7 @@ submitTextButton_success = function(data)
 	console.log(data);
 	console.log(data.data);
 
-	$("#resultDiv2").html(data.data);
+	$("#resultDiv2").html(data.jinja_formatted);
 
 	// Testing this.
 	// https://stackoverflow.com/questions/2342371/jquery-loop-on-json-data-using-each
