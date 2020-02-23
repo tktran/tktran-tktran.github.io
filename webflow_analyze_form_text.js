@@ -12,44 +12,12 @@ const settings = {};
 var db = firebase.firestore();
 db.settings(settings);
 
-// https://www.sitepoint.com/use-jquerys-ajax-function/
-// https://stackoverflow.com/questions/4159701/jquery-posting-valid-json-in-request-body
-submitTextButton_success = function(data)
-{
-	var user = firebase.auth().currentUser;
-	if (user)
-	{
-		console.log('User exists.');
-	}
-
-	// This works!
-	console.log(data);
-
-	// Testing this.
-	// https://stackoverflow.com/questions/2342371/jquery-loop-on-json-data-using-each
-	$.each(data, function(index, element) {
-		console.log('data[', index, ']=', data[index]);
-		// console.log('element = ', element);
-	})
-};
-
-submitTextButton_failure = function(jqxhr, status, exception)
-{
-	var user = firebase.auth().currentUser;
-	if (user)
-	{
-		$("#resultDiv").html("AJAX call failed with exception " + exception);
-	}
-	else
-	{
-		$("#resultDiv").html("AJAX call failed.");
-	}
-};
 
 data_tables_init = function()
 {
 	// https://datatables.net/examples/server_side/post.html
 	// https://datatables.net/reference/option/ajax.data
+	// https://datatables.net/reference/button/selected
 	datatables_config = {
 		dom: "Bfrtip",
 		buttons: [
@@ -117,23 +85,60 @@ data_tables_init = function()
 	}
 }
 
+// https://www.sitepoint.com/use-jquerys-ajax-function/
+// https://stackoverflow.com/questions/4159701/jquery-posting-valid-json-in-request-body
+submitTextButton_success = function(data)
+{
+	var user = firebase.auth().currentUser;
+	if (user)
+	{
+		console.log('User exists.');
+	}
+
+	// This works!
+	console.log(data);
+	console.log(data.data);
+
+	$("#resultDiv").html(data);
+
+	// Testing this.
+	// https://stackoverflow.com/questions/2342371/jquery-loop-on-json-data-using-each
+	$.each(data, function(index, element) {
+		console.log('data[', index, ']=', data[index]);
+		// console.log('element = ', element);
+	})
+};
+
+submitTextButton_failure = function(jqxhr, status, exception)
+{
+	var user = firebase.auth().currentUser;
+	if (user)
+	{
+		$("#resultDiv").html("AJAX call failed with exception " + exception);
+	}
+	else
+	{
+		$("#resultDiv").html("AJAX call failed.");
+	}
+};
+
 submitTextButton_click = function()
 {
-	// console.log("submitTextButton_click.")
-	// gcf_url = "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http";
-	// json_data = JSON.stringify({'text': $('#inputTextField').val()});
-	// console.log('json_data in data_tables_init: ', json_data);
+	console.log("submitTextButton_click.")
+	gcf_url = "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http";
+	json_data = JSON.stringify({'text': $('#inputTextField').val()});
+	console.log('json_data in data_tables_init: ', json_data);
 
-	// $.ajax(
-	// 	{
-	// 		url: gcf_url,
-	// 		type: 'POST',
-	// 		data: json_data,
-	// 		dataType: 'json',
-	// 		contentType: "application/json",
-	// 		success: submitTextButton_success,
-	// 		error: submitTextButton_failure
-	// 	});
+	$.ajax(
+		{
+			url: gcf_url,
+			type: 'POST',
+			data: json_data,
+			dataType: 'json',
+			contentType: "application/json",
+			success: submitTextButton_success,
+			error: submitTextButton_failure
+		});
 
 	data_tables_init();
 };
