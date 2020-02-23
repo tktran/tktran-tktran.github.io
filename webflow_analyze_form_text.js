@@ -99,7 +99,7 @@ submitTextButton_success = function(data)
 	console.log(data);
 	console.log(data.data);
 
-	$("#resultDiv2").html(data.jinja_formatted);
+	$("#resultText2").html(data.jinja_formatted);
 
 	// Testing this.
 	// https://stackoverflow.com/questions/2342371/jquery-loop-on-json-data-using-each
@@ -114,11 +114,11 @@ submitTextButton_failure = function(jqxhr, status, exception)
 	var user = firebase.auth().currentUser;
 	if (user)
 	{
-		$("#resultDiv2").html("AJAX call failed with exception " + exception);
+		$("#resultText2").html("AJAX call failed with exception " + exception);
 	}
 	else
 	{
-		$("#resultDiv2").html("AJAX call failed.");
+		$("#resultText2").html("AJAX call failed.");
 	}
 };
 
