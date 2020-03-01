@@ -85,6 +85,8 @@ data_tables_init = function()
 	}
 }
 
+var data_returned = null;
+
 // https://www.sitepoint.com/use-jquerys-ajax-function/
 // https://stackoverflow.com/questions/4159701/jquery-posting-valid-json-in-request-body
 submitTextButton_success = function(data)
@@ -99,6 +101,8 @@ submitTextButton_success = function(data)
 	console.log(data);
 	console.log(data.data);
 
+	data_returned = data;
+	
 	$("#resultText2").html(data.jinja_formatted);
 
 	// Testing this.
