@@ -73,8 +73,10 @@ data_tables_init = function()
 	};
 
 	// https://datatables.net/reference/api/ajax.reload()
+	var table = null; // will be assigned one way or the other
 	if ( $.fn.dataTable.isDataTable( '#table_id' ) ) {
 		// DataTable ALREADY exists
+		console.log("DataTable already exists.");
     table = $('#table_id').DataTable();
     table.ajax.reload(); // should work right away,
     // since the data parameter in json config is
@@ -82,6 +84,7 @@ data_tables_init = function()
     // input field. AND IT DOES! WOO!
 	}
 	else {
+		console.log("DataTable does not exist.");
 		// DataTable does NOT exist
   	$('#table_id').DataTable(datatables_config);
   	table = $('#table_id').DataTable();
@@ -89,8 +92,8 @@ data_tables_init = function()
 
 	// table will have been assigned in the prior paragraph
 	table.on( 'selectItems', function (e, dt, items) {
+		console.log( 'Items to be selected are now: ', items );
 		data_tables_selection = items; // this will be a string;
-    console.log( 'Items to be selected are now: ', items );
 	} );
 }
 
