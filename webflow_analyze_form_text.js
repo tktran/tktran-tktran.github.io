@@ -12,7 +12,7 @@ const settings = {};
 var db = firebase.firestore();
 db.settings(settings);
 
-
+var data_tables_selection = null;
 data_tables_init = function()
 {
 	// https://datatables.net/examples/server_side/post.html
@@ -74,6 +74,7 @@ data_tables_init = function()
 
 	// https://datatables.net/reference/api/ajax.reload()
 	if ( $.fn.dataTable.isDataTable( '#table_id' ) ) {
+		// DataTable ALREADY exists
     table = $('#table_id').DataTable();
     table.ajax.reload(); // should work right away,
     // since the data parameter in json config is
@@ -81,8 +82,16 @@ data_tables_init = function()
     // input field. AND IT DOES! WOO!
 	}
 	else {
+		// DataTable does NOT exist
   	$('#table_id').DataTable(datatables_config);
+  	table = $('#table_id').DataTable();
 	}
+
+	// table will have been assigned in the prior paragraph
+	table.on( 'selectItems', function (e, dt, items) {
+		data_tables_selection = items; // this will be a string;
+    console.log( 'Items to be selected are now: ', items );
+	} );
 }
 
 var data_returned = null;
@@ -102,7 +111,7 @@ submitTextButton_success = function(data)
 	console.log(data.data);
 
 	data_returned = data;
-	
+
 	$("#resultText2").html(data.jinja_formatted);
 
 	// Testing this.
@@ -128,7 +137,7 @@ submitTextButton_failure = function(jqxhr, status, exception)
 
 submitTextButton_click = function()
 {
-	console.log("submitTextButton_click.")
+	console.log("submitTextButton_click.");
 	gcf_url = "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http";
 	json_data = JSON.stringify({'text': $('#inputTextField').val()});
 	console.log('json_data in data_tables_init: ', json_data);
@@ -148,6 +157,15 @@ submitTextButton_click = function()
 };
 
 $("#submitTextButton").click(submitTextButton_click);
+
+
+// Everything for the sendToFlashCardsButton
+sendToFlashCards_click = function()
+{
+	console.log("sendToFlashCards_click.");
+
+}
+$("#sendToFlashCardsButton").click(sendToFlashCards_click);
 
 // (
 // 	function()
