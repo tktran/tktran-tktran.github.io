@@ -91,10 +91,14 @@ data_tables_init = function()
 	}
 
 	// table will have been assigned in the prior paragraph
-	table.on( 'selectItems', function (e, dt, items) {
-		console.log( 'Items to be selected are now: ', items );
-		data_tables_selection = items; // this will be a string;
-	} );
+	var selectDeselectFunction = function(e, dt, type, indexes)
+	{
+		console.log("selectDeselectFunction");
+		var rowData = table.rows(indexes).data().toArray();
+		console.log( JSON.stringify(rowData) );
+	}
+	table.on('select', selectDeselectFunction);
+	table.on('deselect', selectDeselectFunction);
 }
 
 var data_returned = null;
