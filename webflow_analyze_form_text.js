@@ -94,17 +94,17 @@ data_tables_init = function()
 	var selectDeselectFunction = function(e, dt, type, indexes)
 	{
 		console.log("selectDeselectFunction");
+
+		// Indexes only includes what was selected right then and there
+
 		var rowData = table.rows(indexes).data().toArray();
 		console.log( JSON.stringify(rowData) );
+
+		var rows = dt.rows( { selected: true } ).count();
+		console.log( 'There are ' + rows + '(s) selected in the table' );
 	}
 	table.on('select', selectDeselectFunction);
 	table.on('deselect', selectDeselectFunction);
-
-	var selectItemsFunction = function(e, dt, items)
-	{
-		console.log("selectItemsFunction");
-	}
-	table.on('selectItems', selectItemsFunction);
 }
 
 var data_returned = null;
