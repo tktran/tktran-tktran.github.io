@@ -101,7 +101,7 @@ data_tables_init = function()
 		console.log( JSON.stringify(rowData) );
 
 		rows_selected = dt.rows( { selected: true } ).data();
-		data_tables_selection = rows_selected.map( x => x["tuple1"]);
+		data_tables_selection = rows_selected.map( x => x["word"]);
 	}
 	table.on('select', selectDeselectFunction);
 	table.on('deselect', selectDeselectFunction);
