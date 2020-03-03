@@ -100,12 +100,11 @@ data_tables_init = function()
 		var rowData = table.rows(indexes).data().toArray();
 		console.log( JSON.stringify(rowData) );
 
-		var rows = dt.rows( { selected: true } );
-		console.log( 'There are ' + rows.count() + ' row(s) selected in the table' );
-		console.log( 'Can I just print out the rows?: ' + rows); // Just the string "Object"
-		console.log( 'What about data?: ' + rows.data() ); // 
-		console.log( 'What about the first row of data?: ' + rows.data()[0] );
-		console.log( 'Its name?: ' + rows.data()[0].name() );
+		data_tables_selection = dt.rows( { selected: true } );
+		console.log( 'There are ' + data_tables_selection.count() + ' row(s) selected in the table' );
+		console.log( 'Can I just print out the rows?: ' + data_tables_selection); // Just the string "Object"
+		console.log( 'What about data?: ' + data_tables_selection.data() ); // 
+		console.log( 'What about the first row of data?: ' + data_tables_selection.data()[0] );
 
 	}
 	table.on('select', selectDeselectFunction);
