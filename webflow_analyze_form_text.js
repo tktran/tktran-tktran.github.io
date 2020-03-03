@@ -100,8 +100,9 @@ data_tables_init = function()
 		var rowData = table.rows(indexes).data().toArray();
 		console.log( JSON.stringify(rowData) );
 
-		var rows = dt.rows( { selected: true } ).count();
-		console.log( 'There are ' + rows + '(s) selected in the table' );
+		var rows = dt.rows( { selected: true } );
+		console.log( 'There are ' + rows.count() + ' row(s) selected in the table' );
+		console.log( 'Can I just print out the rows?: ' + rows);
 	}
 	table.on('select', selectDeselectFunction);
 	table.on('deselect', selectDeselectFunction);
