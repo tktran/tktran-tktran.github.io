@@ -99,6 +99,12 @@ data_tables_init = function()
 	}
 	table.on('select', selectDeselectFunction);
 	table.on('deselect', selectDeselectFunction);
+
+	var selectItemsFunction = function(e, dt, items)
+	{
+		console.log("selectItemsFunction");
+	}
+	table.on('selectItems', selectItemsFunction);
 }
 
 var data_returned = null;
