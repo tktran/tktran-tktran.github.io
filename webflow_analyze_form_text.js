@@ -102,7 +102,11 @@ data_tables_init = function()
 
 		var rows = dt.rows( { selected: true } );
 		console.log( 'There are ' + rows.count() + ' row(s) selected in the table' );
-		console.log( 'Can I just print out the rows?: ' + rows);
+		console.log( 'Can I just print out the rows?: ' + rows); // Just the string "Object"
+		console.log( 'What about data?: ' + rows.data() ); // 
+		console.log( 'What about the first row of data?: ' + rows.data()[0] );
+		console.log( 'Its name?: ' + rows.data()[0].name() );
+
 	}
 	table.on('select', selectDeselectFunction);
 	table.on('deselect', selectDeselectFunction);
