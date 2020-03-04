@@ -101,7 +101,7 @@ data_tables_init = function()
 		console.log( JSON.stringify(rowData) );
 
 		rows_selected = dt.rows( { selected: true } ).data();
-		data_tables_selection = rows_selected.map( x => x["word"]);
+		data_tables_selection = rows_selected.map( x => x["word"] );
 	}
 	table.on('select', selectDeselectFunction);
 	table.on('deselect', selectDeselectFunction);
@@ -176,6 +176,40 @@ $("#submitTextButton").click(submitTextButton_click);
 sendToFlashCards_click = function()
 {
 	console.log("sendToFlashCards_click.");
+	// this represents the culmination of all of the dialog
+	// selections. now, the only thing left to do is set off
+	// a google cloud function that will create the notes
+	// and cards or the user. but... do I need a gcf?
+	// or should i create the notes just in javascript?
+	// well, it would be advantageous to do it in a gcf
+	// in the future, what if I want to implement something
+	// like... performing complex calls against the 
+	// user's existing cards or sth? yeah, doing it in the
+	// browser, I'd have to perform a bunch of calls 
+	// in javascript, which I don't want to do. in a gcf
+	// in python, that would be much easier.
+
+	json_data = { 'recall': $("#Recall").is(':checked'),
+		'recognition': $("#Recognition").is(':checked'),
+		'selection': data_tables_selection};
+	console.log('json_data before stringify: ', json_data);
+	console.log('json_data after stringify: ', json.stringify(json_data));
+
+	console.log("submitTextButton_click.");
+	gcf_url = "https://us-central1-memotori.cloudfunctions.net/create_flashcards";
+	json_data = JSON.stringify({'text': $('#inputTextField').val()});
+	console.log('json_data in data_tables_init: ', json_data);
+
+	$.ajax(
+		{
+			url: gcf_url,
+			type: 'POST',
+			data: json_data,
+			dataType: 'json',
+			contentType: "application/json",
+			success: submitTextButton_success,
+			error: submitTextButton_failure
+		});
 
 }
 $("#sendToFlashCardsButton").click(sendToFlashCards_click);
