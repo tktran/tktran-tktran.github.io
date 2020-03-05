@@ -12,6 +12,7 @@ const settings = {};
 var db = firebase.firestore();
 db.settings(settings);
 
+var rows_selected = null;
 var data_tables_selection = null;
 data_tables_init = function()
 {
