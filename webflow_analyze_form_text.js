@@ -172,23 +172,20 @@ submitTextButton_click = function()
 
 $("#submitTextButton").click(submitTextButton_click);
 
+sendToFlashCards_success = function()
+{
+	
+}
+
+sendToFlashCards_failure = function()
+{
+	
+}
 
 // Everything for the sendToFlashCardsButton
 sendToFlashCards_click = function()
 {
 	console.log("sendToFlashCards_click.");
-	// this represents the culmination of all of the dialog
-	// selections. now, the only thing left to do is set off
-	// a google cloud function that will create the notes
-	// and cards or the user. but... do I need a gcf?
-	// or should i create the notes just in javascript?
-	// well, it would be advantageous to do it in a gcf
-	// in the future, what if I want to implement something
-	// like... performing complex calls against the 
-	// user's existing cards or sth? yeah, doing it in the
-	// browser, I'd have to perform a bunch of calls 
-	// in javascript, which I don't want to do. in a gcf
-	// in python, that would be much easier.
 
 	json_data = { 'recall': $("#Recall").is(':checked'),
 		'recognition': $("#Recognition").is(':checked'),
@@ -208,8 +205,8 @@ sendToFlashCards_click = function()
 			data: json_data,
 			dataType: 'json',
 			contentType: "application/json",
-			success: submitTextButton_success,
-			error: submitTextButton_failure
+			success: sendToFlashCards_success,
+			error: sendToFlashCards_failure
 		});
 
 }
