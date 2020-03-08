@@ -199,9 +199,7 @@ sendToFlashCards_click = function()
 	console.log('json_data before stringify: ', json_data);
 	console.log('json_data after stringify: ', JSON.stringify(json_data));
 
-	console.log("submitTextButton_click.");
 	gcf_url = "https://us-central1-memotori.cloudfunctions.net/create_flashcards";
-	json_data = JSON.stringify({'text': $('#inputTextField').val()});
 	console.log('json_data in data_tables_init: ', json_data);
 
 	$.ajax(
