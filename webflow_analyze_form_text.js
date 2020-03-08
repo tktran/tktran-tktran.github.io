@@ -102,7 +102,13 @@ data_tables_init = function()
 		console.log( JSON.stringify(rowData) );
 
 		rows_selected = dt.rows( { selected: true } ).data();
-		data_tables_selection = rows_selected.map( x => x["word"] ).toArray();
+
+		// This certainly worked, but (3/7/20) I made the decision to 
+		// include the data for entire rows at a time rather than just
+		// the word.
+
+		// data_tables_selection = rows_selected.map( x => x["word"] ).toAr/ray();
+		data_tables_selection = rows_selected.toArray();
 	}
 	table.on('select', selectDeselectFunction);
 	table.on('deselect', selectDeselectFunction);
