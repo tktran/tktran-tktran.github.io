@@ -200,13 +200,12 @@ sendToFlashCards_click = function()
 	console.log('json_data after stringify: ', JSON.stringify(json_data));
 
 	gcf_url = "https://us-central1-memotori.cloudfunctions.net/create_flashcards";
-	console.log('json_data in data_tables_init: ', json_data);
 
 	$.ajax(
 		{
 			url: gcf_url,
 			type: 'POST',
-			data: json_data,
+			data: JSON.stringify(json_data),
 			dataType: 'json',
 			contentType: "application/json",
 			success: sendToFlashCards_success,
