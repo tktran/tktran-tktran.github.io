@@ -45,11 +45,11 @@ $(this).ready( function() {
 				if (event.results[i].isFinal) {
 					final_transcript += transcript;
 					console.log('Final transcript: ', final_transcript);
-					$("recognizedTextField").text( final_transcript );
+					$("#recognizedTextField").text( final_transcript );
 				} else {
 					interimTranscript += transcript;
 					console.log('Interim transcript: ', interimTranscript);
-					$("recognizedTextField").text( interimTranscript );
+					$("#recognizedTextField").text( interimTranscript );
 
 				}
 			}
