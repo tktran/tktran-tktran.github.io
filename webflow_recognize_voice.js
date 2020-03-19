@@ -36,6 +36,8 @@ $(this).ready( function() {
 		recognition.maxAlternatives = 10;
 
 		recognition.onresult = (event) => {
+			console.log('recognition onResult event.');
+			
 			let interimTranscript = '';
 			for (let i = event.resultIndex, len = event.results.length; i < len; i++) 
 			{
