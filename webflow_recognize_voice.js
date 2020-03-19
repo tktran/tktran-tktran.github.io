@@ -34,10 +34,10 @@ $(this).ready( function() {
 		recognition.interimResults = true;
 		recognition.continuous = true;
 		recognition.maxAlternatives = 10;
-
+		recognition.lang = "vi"
 		recognition.onresult = (event) => {
 			console.log('recognition onResult event.');
-			
+
 			let interimTranscript = '';
 			for (let i = event.resultIndex, len = event.results.length; i < len; i++) 
 			{
