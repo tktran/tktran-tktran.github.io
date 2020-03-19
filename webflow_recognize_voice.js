@@ -21,21 +21,35 @@
 
 // $( document ).ready(ready_function);
 
-// https://codeburst.io/html5-speech-recognition-api-670846a50e92
-window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
-if ('SpeechRecognition' in window) {
-	const recognition = new window.SpeechRecognition();
-	console.log('const recognition succeeded.');
 
-	recognition.onresult = (event) => {
-	  const speechToText = event.results[0][0].transcript;
-	  console.log(speechToText);
+$(this).ready( function() {
+	// https://codeburst.io/html5-speech-recognition-api-670846a50e92
+	window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+	if ('SpeechRecognition' in window) {
+		console.log('SpeechRecognition is in window!.');
+
+		let recognition = new window.SpeechRecognition();
+		let final_transcript = '';
+
+		recognition.interimResults = true;
+		recognition.continuous = true;
+		recognition.maxAlternatives = 10;
+
+		recognition.onresult = (event) => {
+			let interimTranscript = '';
+			for (let i = event.resultIndex, len = event.results.length; i < len; i++) 
+			{
+				let transcript = event.results[i][0].transcript;
+				if (event.results[i].isFinal) {
+					final_transcript += transcript;
+					console.log('Final transcript: ', final_transcript);
+				} else {
+					interimTranscript += transcript;
+					console.log('Interim transcript: ', interimTranscript);
+				}
+			}
+		}
+		
+		recognition.start();
 	}
-	recognition.interimResults = true;
-	recognition.continuous = true;
-	
-	recognition.start();
-
-} else {
-  console.log('SpeechRecognition not in window');
-}
+});
