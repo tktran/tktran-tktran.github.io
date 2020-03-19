@@ -31,6 +31,9 @@ if ('SpeechRecognition' in window) {
 	  const speechToText = event.results[0][0].transcript;
 	  console.log(speechToText);
 	}
+	recognition.interimResults = true;
+	recognition.continuous = true;
+	
 	recognition.start();
 
 } else {
