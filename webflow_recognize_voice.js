@@ -26,6 +26,13 @@ window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecogn
 if ('SpeechRecognition' in window) {
 	const recognition = new window.SpeechRecognition();
 	console.log('const recognition succeeded.');
+
+	recognition.onresult = (event) => {
+	  const speechToText = event.results[0][0].transcript;
+	  console.log(speechToText);
+	}
+	recognition.start();
+
 } else {
   console.log('SpeechRecognition not in window');
 }
