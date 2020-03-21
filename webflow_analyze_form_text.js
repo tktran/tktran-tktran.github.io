@@ -14,7 +14,7 @@ db.settings(settings);
 
 var rows_selected = null;
 var data_tables_selection = null;
-data_tables_init = function()
+data_tables_init = function(selector)
 {
 	// https://datatables.net/examples/server_side/post.html
 	// https://datatables.net/reference/option/ajax.data
@@ -42,7 +42,7 @@ data_tables_init = function()
 			url: "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http",
 			type: "POST",
 			data: function(d) {
-				d.text = $('#inputTextField').val();
+				d.text = $(selector).val();
 				return JSON.stringify(d);
 			},
 			contentType: "application/json",
@@ -159,21 +159,24 @@ submitTextButton_click = function()
 {
 	console.log("submitTextButton_click.");
 	gcf_url = "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http";
-	json_data = JSON.stringify({'text': $('#inputTextField').val()});
-	console.log('json_data in data_tables_init: ', json_data);
+	// json_data = JSON.stringify({'text': $('#inputTextField').val()});
+	// console.log('json_data in data_tables_init: ', json_data);
 
-	$.ajax(
-		{
-			url: gcf_url,
-			type: 'POST',
-			data: json_data,
-			dataType: 'json',
-			contentType: "application/json",
-			success: submitTextButton_success,
-			error: submitTextButton_failure
-		});
+	// // Don't need this; it's in the datatables init callback now
+	// $.ajax(
+	// 	{
+	// 		url: gcf_url,
+	// 		type: 'POST',
+	// 		data: json_data,
+	// 		dataType: 'json',
+	// 		contentType: "application/json",
+	// 		success: submitTextButton_success,
+	// 		error: submitTextButton_failure
+	// 	});
 
-	data_tables_init();
+	// pass the selector, not the text, because the selector will pass to the
+	// callback and the callback will be called every time you click on a button
+	data_tables_init("#inputTextField");
 };
 
 $("#submitTextButton").click(submitTextButton_click);
