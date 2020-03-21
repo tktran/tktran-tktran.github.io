@@ -16,6 +16,7 @@ var rows_selected = null;
 var data_tables_selection = null;
 data_tables_init = function(selector)
 {
+	console.log( "$selector has value ", $(selector).val() );
 	// https://datatables.net/examples/server_side/post.html
 	// https://datatables.net/reference/option/ajax.data
 	// https://datatables.net/reference/button/selected
