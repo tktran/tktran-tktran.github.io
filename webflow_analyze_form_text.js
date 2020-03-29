@@ -16,7 +16,7 @@ var rows_selected = null;
 var data_tables_selection = null;
 data_tables_init = function(input_field)
 {
-	console.log( "input_field is ", input_field, " and it has value ", $(input_field).val() );
+	console.log( "input_field is ", input_field, " and it has value ", document.getElementById(input_field).value );
 	// https://datatables.net/examples/server_side/post.html
 	// https://datatables.net/reference/option/ajax.data
 	// https://datatables.net/reference/button/selected
@@ -43,7 +43,7 @@ data_tables_init = function(input_field)
 			url: "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http",
 			type: "POST",
 			data: function(d) {
-				d.text = $(input_field).val();
+				d.text = document.getElementById(input_field).value;
 				return JSON.stringify(d);
 			},
 			contentType: "application/json",
