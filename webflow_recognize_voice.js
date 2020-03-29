@@ -14,24 +14,26 @@ $(this).ready( function() {
 		recognition.onresult = (event) => {
 			console.log('recognition onResult event.');
 
-			let interimTranscript = '';
-			for (let i = event.resultIndex, len = event.results.length; i < len; i++) 
-			{
-				let transcript = event.results[i][0].transcript;
-				if (event.results[i].isFinal) {
-					final_transcript += transcript;
-					console.log('Final transcript: ', final_transcript);
-					$("#recognizedTextField").text( 'Final: ' + final_transcript );
+			$("#recognizedTextField").text( "一二三你好中文" );
+			data_tables_init("#recognizedTextField");
+			// let interimTranscript = '';
+			// for (let i = event.resultIndex, len = event.results.length; i < len; i++) 
+			// {
+			// 	let transcript = event.results[i][0].transcript;
+			// 	if (event.results[i].isFinal) {
+			// 		final_transcript += transcript;
+			// 		console.log('Final transcript: ', final_transcript);
+			// 		$("#recognizedTextField").text( 'Final: ' + final_transcript );
 
-					// Should run the datatables init now
-					data_tables_init("#recognizedTextField");
-				} else {
-					interimTranscript += transcript;
-					console.log('Interim transcript: ', interimTranscript);
-					$("#recognizedTextField").text( 'Interim: ' + interimTranscript );
+			// 		// Should run the datatables init now
+			// 		data_tables_init("#recognizedTextField");
+			// 	} else {
+			// 		interimTranscript += transcript;
+			// 		console.log('Interim transcript: ', interimTranscript);
+			// 		$("#recognizedTextField").text( 'Interim: ' + interimTranscript );
 
-				}
-			}
+			// 	}
+			// }
 		}
 		
 		recognition.start();
