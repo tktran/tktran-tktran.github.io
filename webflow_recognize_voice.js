@@ -1,6 +1,6 @@
 $(this).ready( function() {
 	$("#recognizedTextField").text( "一二三你好中文" );
-	data_tables_init("#recognizedTextField");
+	data_tables_init( $("#recognizedTextField").val() );
 
 	// https://codeburst.io/html5-speech-recognition-api-670846a50e92
 	window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
