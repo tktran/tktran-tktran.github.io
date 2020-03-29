@@ -14,9 +14,9 @@ db.settings(settings);
 
 var rows_selected = null;
 var data_tables_selection = null;
-data_tables_init = function(input_field)
+data_tables_init = function(input_value)
 {
-	console.log( "$input_field has value ", $(input_field).val() );
+	console.log( "input_value is ", input_value );
 	// https://datatables.net/examples/server_side/post.html
 	// https://datatables.net/reference/option/ajax.data
 	// https://datatables.net/reference/button/selected
@@ -43,7 +43,7 @@ data_tables_init = function(input_field)
 			url: "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http",
 			type: "POST",
 			data: function(d) {
-				d.text = $(input_field).val();
+				d.text = input_value;
 				return JSON.stringify(d);
 			},
 			contentType: "application/json",
@@ -177,7 +177,7 @@ submitTextButton_click = function()
 
 	// pass the selector, not the text, because the selector will pass to the
 	// callback and the callback will be called every time you click on a button
-	data_tables_init("#inputTextField");
+	data_tables_init( $("#inputTextField").val() );
 };
 
 $("#submitTextButton").click(submitTextButton_click);

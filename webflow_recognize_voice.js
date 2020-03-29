@@ -27,7 +27,7 @@ $(this).ready( function() {
 					$("#recognizedTextField").text( 'Final: ' + final_transcript );
 
 					// Should run the datatables init now
-					data_tables_init("#recognizedTextField");
+					data_tables_init( $("#recognizedTextField").val() );
 				} else {
 					interimTranscript += transcript;
 					console.log('Interim transcript: ', interimTranscript);
