@@ -58,7 +58,7 @@ ajaxCallButton_click = function()
 	  dataType:"json",
 	  headers: {
 	  	"X-Test-Content-Type": "application/octet-stream",
-	  	}
+	  	},
 	  success: function(res, status, xhr)
 	  {
 	  	alert( xhr.getResponseHeader("myHeader") )
