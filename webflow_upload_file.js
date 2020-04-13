@@ -50,10 +50,10 @@ ajaxCallButton_click = function()
 	$.ajax({
 	  url: gcf_url,
 	  type: "POST",
-`		  data: {
+		data: {
 	  	uploadType: 'resumable',
 	  	'name': 'test.mp3',
-	  	},
+  	},
 	  contentType: "application/json; charset=utf-8",
 	  dataType:"json",
 	  headers: {
