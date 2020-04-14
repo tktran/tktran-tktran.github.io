@@ -45,7 +45,7 @@ $(this).ready( function() {
 ajaxCallButton_click = function()
 {
 	console.log("submitTextButton_click.");
-	gcf_url = "https://us-central1-memotori.cloudfunctions.net/hello_firestore_http";
+	gcf_url = "https://storage.googleapis.com/upload/storage/v1/b/memotori.appspot.com/o";
 
 	$.ajax({
 	  url: gcf_url,
