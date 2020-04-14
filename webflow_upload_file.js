@@ -57,7 +57,7 @@ ajaxCallButton_click = function()
 	  contentType: "application/json; charset=utf-8",
 	  dataType:"json",
 	  headers: {
-	  	"X-Test-Content-Type": "application/octet-stream",
+	  	"X-Content-Type": "application/octet-stream",
 	  	},
 	  success: function(res, status, xhr)
 	  {
