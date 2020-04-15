@@ -55,11 +55,11 @@ ajaxCallButton_click = function()
 	  contentType: "application/json; charset=utf-8",
 	  dataType:"json",
 	  headers: {
-	  	"X-Content-Type": "application/octet-stream",
+	  	"Content-Type": "application/octet-stream",
 	  	},
 	  success: function(res, status, xhr)
 	  {
-	  	alert( xhr.getResponseHeader("myHeader") )
+	  	console.log( xhr.getResponseHeader("myHeader") )
 	  },
 	  failure: function(res, status, xhr)
 	  {
