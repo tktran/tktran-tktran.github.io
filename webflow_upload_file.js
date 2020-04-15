@@ -60,6 +60,10 @@ ajaxCallButton_click = function()
 	  success: function(res, status, xhr)
 	  {
 	  	alert( xhr.getResponseHeader("myHeader") )
+	  },
+	  failure: function(res, status, xhr)
+	  {
+	  	console.log( xhr.getResponseHeader("myHeader") );
 	  }
 	})
 };
