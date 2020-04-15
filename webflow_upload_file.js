@@ -39,20 +39,18 @@ $(this).ready( function() {
 		
 		recognition.start();
 	}
-});
+})
 
 
 ajaxCallButton_click = function()
 {
 	console.log("submitTextButton_click.");
-	gcf_url = "https://storage.googleapis.com/upload/storage/v1/b/memotori.appspot.com/o";
+	gcf_url = "https://storage.googleapis.com/upload/storage/v1/b/memotori.appspot.com/o?uploadType=resumable&name=myObject";
 
 	$.ajax({
 	  url: gcf_url,
 	  type: "POST",
 		data: {
-	  	uploadType: 'resumable',
-	  	'name': 'test.mp3',
   	},
 	  contentType: "application/json; charset=utf-8",
 	  dataType:"json",
